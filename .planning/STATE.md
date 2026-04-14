@@ -8,17 +8,23 @@
 
 **Phase 3 — World Concept & Camera Choreography**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Not started
+**Status:** Planned
 **Branch:** `milestone/v0.5-inhabited-world` (shared with Phase 2)
 
 ### 다음 액션
 ```
-/sunco:plan 3
+/sunco:execute 3
 ```
 
-### 주의사항
-- Blocker B1 해소 필요: 월드 컨셉 4안 중 1택 (떠다니는 군도 / 디지털 아틀리에 / 데이터 숲 / 뉴트로 도시)
-- Phase 3 planing 전 store shape 설계 (`postMeta: Record<string, PostMeta>`) 검토
+### 플랜 구조 (Wave)
+
+| Plan | Wave | Title | REQ |
+|------|------|-------|-----|
+| 03-01 | 1 | Install GSAP+Lenis deps, extend worldStore, SmoothScrollProvider | MOT-03 |
+| 03-02 | 1 | Archipelago scene geometry — islands, cloud plane, Spline stubs | INT-02 |
+| 03-03 | 2 (after 01+02) | Camera choreography — WorldCameraRig + WorldScrollCamera + waypoint wiring | CORE-02, MOT-01 |
+
+Wave 1 plans (03-01, 03-02) run in parallel. Wave 2 (03-03) follows.
 
 ---
 
