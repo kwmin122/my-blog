@@ -98,7 +98,40 @@
 
 | REQ-ID | Phase | Status |
 |--------|-------|--------|
-| (filled by roadmapper) | | |
+| CORE-01 | Phase 1 | Not started |
+| CORE-02 | Phase 3 | Not started |
+| CORE-03 | Phase 2 | Not started |
+| CORE-04 | Phase 2 | Not started |
+| CORE-05 | Phase 1 | Not started |
+| CORE-06 | Phase 1 | Not started |
+| VIS-01 | Phase 5 | Not started |
+| VIS-02 | Phase 5 | Not started |
+| VIS-03 | Phase 5 | Not started |
+| VIS-04 | Phase 6 | Not started |
+| VIS-05 | Phase 6 | Not started |
+| MOT-01 | Phase 3 | Not started |
+| MOT-02 | Phase 6 | Not started |
+| MOT-03 | Phase 3 | Not started |
+| MOT-04 | Phase 4 | Not started |
+| INT-01 | Phase 6 | Not started |
+| INT-02 | Phase 3 | Not started |
+| INT-03 | Phase 4 | Not started |
+| CONT-01 | Phase 2 | Not started |
+| CONT-02 | Phase 7 | Not started |
+| CONT-03 | Phase 7 | Not started |
+| A11Y-01 | Phase 7 | Not started |
+| A11Y-02 | Phase 7 | Not started |
+| A11Y-03 | Phase 4 | Not started |
+| PERF-01 | Phase 8 | Not started |
+| PERF-02 | Phase 8 | Not started |
+| PERF-03 | Phase 8 | Not started |
+| PERF-04 | Phase 8 | Not started |
+| PERF-05 | Phase 1 | Not started |
+| INFRA-01 | Phase 8 | Not started |
+| INFRA-02 | Phase 8 | Not started |
+| INFRA-03 | Phase 8 | Not started |
+| INFRA-04 | Phase 1 | Not started |
+| DSGN-01 | Phase 4 | Not started |
 
 ---
 
