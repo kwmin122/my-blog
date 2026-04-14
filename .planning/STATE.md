@@ -8,18 +8,19 @@
 
 **Phase 2 — Canonical Content Split**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Planned (2026-04-14)
-**Branch target:** TBD
+**Status:** Executed (2026-04-14)
+**Branch:** `milestone/v0.5-inhabited-world`
 
 ### 다음 액션
 ```
-/sunco:execute 2
+/sunco:verify 2
 ```
 
-### 실행 계획
-- Plan 02-01 (Wave 1): MDX Pipeline + Content Infrastructure — `CORE-03, CONT-01`
-- Plan 02-02 (Wave 2, depends on 02-01): World Route Wiring + drei Html Overlay — `CORE-04`
+### 실행 결과
+- Plan 02-01 (Wave 1): MDX Pipeline + Content Infrastructure — ✅ PASS (lint PASS)
+- Plan 02-02 (Wave 2): World Route Wiring + drei Html Overlay — ✅ PASS (lint PASS)
 - Plans: `.planning/phases/02-canonical-content-split/`
+- Verification checklist: `.planning/phases/02-canonical-content-split/02-VERIFICATION.md`
 
 ---
 
