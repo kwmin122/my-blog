@@ -6,6 +6,8 @@ import { useRef } from 'react'
 import { markWorldFirstFrame } from '@/lib/perf'
 import { useWorldStore } from '@/lib/worldStore'
 import ArchipelagoScene from './ArchipelagoScene'
+import WorldCameraRig from './WorldCameraRig'
+import WorldScrollCamera from './WorldScrollCamera'
 
 export default function WorldScene() {
   const hasMarked = useRef(false)
@@ -20,6 +22,8 @@ export default function WorldScene() {
 
   return (
     <>
+      <WorldCameraRig />
+      <WorldScrollCamera />
       <ArchipelagoScene />
       {postOverlay && (
         <Html center distanceFactor={10} position={[0, 1, -3]}>
