@@ -6,28 +6,27 @@
 
 ## Current Phase
 
-**Phase 1 — Foundation & Verification**
+**Phase 2 — Content Layer & MDX Pipeline**
 **Milestone:** M1 (v0.1 — World Skeleton)
-**Deadline:** 2026-04-28 (약 2주)
-**Status:** Executed (2026-04-14)
-**Branch target:** `milestone/v0.1-skeleton`
-
-### Phase 1 요약
-- Next.js App Router 골격 + layout 영속 `<WorldCanvas>` 마운트
-- WebGPU → WebGL2 → 정적 포스터 3단계 강등 체인
-- Vercel 자동 배포 파이프라인
-- `performance.mark()` 자체 계측 스캐폴드 (값은 아직 게이트 미적용)
+**Deadline:** 2026-04-28
+**Status:** Not started
+**Branch target:** TBD
 
 ### 다음 액션
 ```
-/sunco:verify 1
+/sunco:plan 2
 ```
 
-### 실행 결과
-- Plan 01-01 (Wave 1): COMPLETE — `INFRA-04` (Vercel CI는 human action 대기)
-- Plan 01-02 (Wave 2): COMPLETE — `CORE-01, CORE-05, CORE-06, PERF-05`
-- Build: PASS | Lint: PASS | TSC: PASS
-- 상세: `.planning/phases/01-foundation-and-verification/01-VERIFICATION.md`
+---
+
+## Completed Phases
+
+### Phase 1 — Foundation & Verification ✅ SHIPPED
+**Status:** Shipped (2026-04-14)
+**PR:** kwmin122/my-blog#1 (milestone/v0.1-skeleton → main)
+**Production:** https://webbuild-gray.vercel.app
+**Verification:** 7/7 layers PASS
+**Requirements:** CORE-01, CORE-05, CORE-06, INFRA-04, PERF-05
 
 ---
 
