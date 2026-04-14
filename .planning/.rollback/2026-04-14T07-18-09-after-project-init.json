@@ -1,0 +1,11 @@
+{
+  "label": "after-project-init",
+  "tag": "sunco/rollback/2026-04-14T07-18-09-after-project-init",
+  "timestamp": "2026-04-14T07:18:09.182Z",
+  "artifacts": [
+    ".planning/PROJECT.md"
+  ],
+  "hashes": {
+    ".planning/PROJECT.md": "1c943fe271452b04619dfa1df1c651be05d262cd8deec142586b6deca23c3197"
+  }
+}
