@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {

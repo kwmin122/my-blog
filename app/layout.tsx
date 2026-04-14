@@ -1,12 +1,7 @@
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic'
 import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
+import SmoothScrollProviderWrapper from '@/components/providers/SmoothScrollProviderWrapper'
 import './globals.css'
-
-const SmoothScrollProvider = dynamic(
-  () => import('@/components/providers/SmoothScrollProvider'),
-  { ssr: false },
-)
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -27,9 +22,9 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <WorldCanvasLoader />
-        <SmoothScrollProvider>
+        <SmoothScrollProviderWrapper>
           <main id="page-content">{children}</main>
-        </SmoothScrollProvider>
+        </SmoothScrollProviderWrapper>
       </body>
     </html>
   )
