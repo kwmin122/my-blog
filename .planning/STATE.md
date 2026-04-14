@@ -55,7 +55,7 @@
 | 트렌드 통합은 Phase 5·6에 집중 | v0.1/v0.5는 아키텍처·콘텐츠·a11y 기반 작업, v1.0 마일스톤에서 시각 트렌드 폭발 | Active (트렌드 가지치기 금지 원칙 유지) |
 | 자체 성능 계측 스캐폴드는 Phase 1 | 게이트 통과는 Phase 8이지만 인스트루먼트는 초기 구축해야 측정 데이터 축적 가능 | Active |
 | 디자인 토큰은 v0.5(Phase 4)에서 초안, v1.0까지 lint 강제 유지 | DSGN-01 분기 구현 (REQUIREMENTS.md Notes 명시) | Active |
-| Phase 3 진입 전 월드 컨셉 확정 필수 | 디자인 doc Open Question #1 + 카메라 waypoint 배치 전제 조건 | Active (blocker) |
+| Phase 3 진입 전 월드 컨셉 확정 필수 | 디자인 doc Open Question #1 + 카메라 waypoint 배치 전제 조건 | **RESOLVED (2026-04-14) → 떠다니는 군도** |
 
 ---
 
@@ -63,12 +63,11 @@
 
 Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할 항목.
 
-### B1 — 월드 컨셉 미결정 (Phase 3 진입 blocker)
-- **원문:** 디자인 doc Open Question #1 — "떠다니는 군도 / 디지털 아틀리에 / 데이터 숲 / 뉴트로 도시" 4안 중 1택 미결정
-- **영향:** Phase 3(Camera Choreography)의 waypoint 배치·Spline 오브젝트 선정·v0.5 디자인 토큰 생태 결정 전부 이 선택에 의존
-- **언제까지:** Phase 3 착수 전 (v0.5 2026-06-30 데드라인 역산 시 2026-05-중 이전)
-- **해소 방법:** `/sunco:design-shotgun "3D 월드 비주얼 메타포 4안"` 또는 다음 office-hours 세션 후속
-- **Phase 1·2 진행 가능 여부:** OK — Phase 1(골격)·Phase 2(콘텐츠 분리)는 월드 컨셉 비의존
+### ~~B1 — 월드 컨셉 미결정~~ RESOLVED (2026-04-14)
+- **결론:** **떠다니는 군도 (Floating Archipelago)** 확정
+- 구름 바다 위 4~6개 바위섬, 섬마다 카테고리(일기·공부·일지), 카메라가 섬 사이를 비행
+- 팔레트: 하늘색 + Cloud Dancer + 따뜻한 대지색 + 네온 포인트
+- Phase 3 영향: waypoint = 섬 위 착지 포인트, Spline 오브젝트 = 섬 지형·나무·집
 
 ### B2 — 위키 미검증 주장 1차 출처 확인
 - **원문:** 디자인 doc Open Question #5 — "WebGPU 15~30배", "팬톤 2026 'Cloud Dancer'", "Safari 26 WebGPU 완전 지원", "모바일 53% 3초 이탈"
