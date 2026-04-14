@@ -4,6 +4,19 @@
 
 ---
 
+## 문서 계층 (충돌 해소 순서)
+
+```
+2026-04-14-personal-blog-3d-world.md  ← 읽기 전용 원본 설계 의도 (정본 기준)
+         ↓ 추출·구조화
+.planning/PROJECT.md / REQUIREMENTS.md / ROADMAP.md  ← SUNCO 살아있는 문서
+```
+
+- design doc의 수치·결정이 코드나 .planning과 충돌하면 **design doc이 우선**.
+- 변경 필요 시: **design doc revision → .planning 갱신 순서 필수**. 역순 금지.
+
+---
+
 ## 프로젝트 개요
 
 개인 블로그를 단일 연속 WebGPU 3D 월드로 구현하는 작품형 사이트.

@@ -9,20 +9,24 @@
 **Phase 1 — Foundation & Verification**
 **Milestone:** M1 (v0.1 — World Skeleton)
 **Deadline:** 2026-04-28 (약 2주)
-**Status:** Not started (roadmap just created)
-**Branch target:** `milestone/v0.1-skeleton` (아직 생성 안 됨)
+**Status:** Planned (2026-04-14)
+**Branch target:** `milestone/v0.1-skeleton`
 
 ### Phase 1 요약
 - Next.js App Router 골격 + layout 영속 `<WorldCanvas>` 마운트
 - WebGPU → WebGL2 → 정적 포스터 3단계 강등 체인
-- Vercel 또는 Cloudflare Pages 자동 배포 파이프라인
+- Vercel 자동 배포 파이프라인
 - `performance.mark()` 자체 계측 스캐폴드 (값은 아직 게이트 미적용)
 
-### 다음 액션 (roadmap 이후)
-1. Pre-Phase 1 차단자 해소 (blockers 섹션 참조)
-2. `/sunco:plan` 으로 Phase 1 작업 분해
-3. 작업 디렉토리 `/Users/min-kyungwook/Desktop/dev/webbuild`에 git init + `milestone/v0.1-skeleton` 브랜치 생성
-4. `pnpm create next-app` + lock-set 12개 의존성 설치
+### 다음 액션
+```
+/sunco:execute 1
+```
+
+### 실행 계획
+- Plan 01-01 (Wave 1): Next.js scaffold + Vercel CI — `INFRA-04`
+- Plan 01-02 (Wave 2, depends on 01-01): WorldCanvas + renderer fallback + perf.mark — `CORE-01, CORE-05, CORE-06, PERF-05`
+- Plans: `.planning/phases/01-foundation-and-verification/`
 
 ---
 
@@ -64,12 +68,14 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - **해소 방법:** `/sunco:research` 수동 확인, 1차 출처 URL 기록
 - **위험 트리거:** 핵심 가정 파괴 시 즉시 office-hours 재호출
 
-### B3 — R3F + WebGPU 프로덕션 성숙도 검증
-- **원문:** 디자인 doc Open Question #7 — drei helper WebGL assumption (post-processing, raycast 일부) 호환성
-- **영향:** Phase 1 초기에 발견되면 CORE-01·CORE-05의 구현 전략 조정 필요, 후반 발견 시 대규모 리워크
-- **언제까지:** Phase 1 첫 주 (2026-04-14~21) 안에 reference 프로젝트 1~2개 확인
-- **해소 방법:** GitHub에서 "r3f webgpu" 프로덕션 배포 사례 2개 이상 확인, drei 호환성 이슈 트래커 점검
-- **대체안:** WebGPU 통합이 여전히 실험적이면 v0.1은 WebGL2 기본 + WebGPU 플래그 opt-in 경로로 재설계
+### ~~B3 — R3F + WebGPU 프로덕션 성숙도 검증~~ RESOLVED (2026-04-14)
+- **결론:** R3F v9 (9.6.0) + three.js r183 + WebGPURenderer = 프로덕션 준비 완료.
+- async `gl` prop factory 패턴 공식 확인. `await renderer.init()` 필수.
+- Phase 1에서 사용하는 drei helpers(`<Html>`, `OrbitControls`, `useGLTF`) 전부 WebGPU 호환.
+- `EffectComposer`/`SoftShadows`/`AccumulativeShadows`는 미사용(lock-set 외)이므로 충돌 없음.
+- WebGL2 fallback = `WebGPURenderer({ forceWebGL: true })` — 별도 WebGLRenderer 인스턴스 불필요.
+- 대체안(WebGL2 기본 + WebGPU opt-in) 불필요. WebGPU 최초 렌더러로 진행.
+- 리서치 상세: `.planning/phases/01-foundation-and-verification/01-RESEARCH.md`
 
 ### B4 — 호스팅 헤더 사전 검증 (미차단이지만 Phase 8 전 확정 필요)
 - **원문:** 디자인 doc Open Question #3 + INFRA-03
