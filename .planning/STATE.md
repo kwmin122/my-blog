@@ -6,25 +6,29 @@
 
 ## Current Phase
 
-**Phase 2 — Canonical Content Split**
+**Phase 3 — World Concept & Camera Choreography**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Executed (2026-04-14)
-**Branch:** `milestone/v0.5-inhabited-world`
+**Status:** Not started
+**Branch:** `milestone/v0.5-inhabited-world` (shared with Phase 2)
 
 ### 다음 액션
 ```
-/sunco:verify 2
+/sunco:plan 3
 ```
 
-### 실행 결과
-- Plan 02-01 (Wave 1): MDX Pipeline + Content Infrastructure — ✅ PASS (lint PASS)
-- Plan 02-02 (Wave 2): World Route Wiring + drei Html Overlay — ✅ PASS (lint PASS)
-- Plans: `.planning/phases/02-canonical-content-split/`
-- Verification checklist: `.planning/phases/02-canonical-content-split/02-VERIFICATION.md`
+### 주의사항
+- Blocker B1 해소 필요: 월드 컨셉 4안 중 1택 (떠다니는 군도 / 디지털 아틀리에 / 데이터 숲 / 뉴트로 도시)
+- Phase 3 planing 전 store shape 설계 (`postMeta: Record<string, PostMeta>`) 검토
 
 ---
 
 ## Completed Phases
+
+### Phase 2 — Canonical Content Split ✅ SHIPPED
+**Status:** Shipped (2026-04-14)
+**PR:** kwmin122/my-blog#2 (milestone/v0.5-inhabited-world → main)
+**Verification:** 7/7 layers PASS (3 issues patched)
+**Requirements:** CORE-03, CORE-04, CONT-01
 
 ### Phase 1 — Foundation & Verification ✅ SHIPPED
 **Status:** Shipped (2026-04-14)
