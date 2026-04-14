@@ -1,0 +1,32 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "01",
+  "phase_name": "foundation-and-verification",
+  "wave_completed": 1,
+  "timestamp": "2026-04-14T00:00:00Z",
+  "plans_completed": [
+    {
+      "id": "01-01",
+      "title": "Next.js Project Scaffold + Vercel CI",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/01-foundation-and-verification/01-01-SUMMARY.md",
+      "last_commit": "6729bdb"
+    }
+  ],
+  "plans_pending": [
+    {
+      "id": "01-02",
+      "title": "WorldCanvas + Renderer Fallback + Perf Scaffold",
+      "wave": 2,
+      "status": "pending"
+    }
+  ],
+  "blast_radius": {
+    "risk": "LOW",
+    "files_in_scope": 10,
+    "files_transitively_affected": 0
+  },
+  "lint_gate_overrides": [],
+  "interrupted": false
+}

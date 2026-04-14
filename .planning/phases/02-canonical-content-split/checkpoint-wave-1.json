@@ -1,0 +1,47 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "02",
+  "phase_name": "canonical-content-split",
+  "phase_slug": "02-canonical-content-split",
+  "wave_completed": 1,
+  "timestamp": "2026-04-14T00:00:00Z",
+  "plans_completed": [
+    {
+      "id": "02-01",
+      "title": "MDX Pipeline + Content Infrastructure",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/02-canonical-content-split/02-01-SUMMARY.md",
+      "last_commit": "8b6f25f",
+      "files_written": [
+        "package.json",
+        "next.config.ts",
+        "tsconfig.json",
+        "mdx-components.tsx",
+        "app/layout.tsx",
+        "app/text/[slug]/page.tsx",
+        "lib/posts.ts",
+        "lib/worldStore.ts",
+        "content/posts/sample.mdx",
+        "content/posts/sample.alt.json"
+      ]
+    }
+  ],
+  "plans_pending": [
+    {
+      "id": "02-02",
+      "title": "World Route Wiring + drei Html Overlay",
+      "wave": 2,
+      "status": "pending"
+    }
+  ],
+  "blast_radius": {
+    "risk": "LOW",
+    "files_in_scope": 13,
+    "files_transitively_affected": 2
+  },
+  "lint_gate_overrides": [],
+  "branch": "milestone/v0.5-inhabited-world",
+  "interrupted": false,
+  "next_wave": 2
+}

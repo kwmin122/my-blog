@@ -6,27 +6,36 @@
 
 ## Current Phase
 
-**Phase 1 — Foundation & Verification**
-**Milestone:** M1 (v0.1 — World Skeleton)
-**Deadline:** 2026-04-28 (약 2주)
-**Status:** Planned (2026-04-14)
-**Branch target:** `milestone/v0.1-skeleton`
-
-### Phase 1 요약
-- Next.js App Router 골격 + layout 영속 `<WorldCanvas>` 마운트
-- WebGPU → WebGL2 → 정적 포스터 3단계 강등 체인
-- Vercel 자동 배포 파이프라인
-- `performance.mark()` 자체 계측 스캐폴드 (값은 아직 게이트 미적용)
+**Phase 3 — World Concept & Camera Choreography**
+**Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
+**Status:** Not started
+**Branch:** `milestone/v0.5-inhabited-world` (shared with Phase 2)
 
 ### 다음 액션
 ```
-/sunco:execute 1
+/sunco:plan 3
 ```
 
-### 실행 계획
-- Plan 01-01 (Wave 1): Next.js scaffold + Vercel CI — `INFRA-04`
-- Plan 01-02 (Wave 2, depends on 01-01): WorldCanvas + renderer fallback + perf.mark — `CORE-01, CORE-05, CORE-06, PERF-05`
-- Plans: `.planning/phases/01-foundation-and-verification/`
+### 주의사항
+- Blocker B1 해소 필요: 월드 컨셉 4안 중 1택 (떠다니는 군도 / 디지털 아틀리에 / 데이터 숲 / 뉴트로 도시)
+- Phase 3 planing 전 store shape 설계 (`postMeta: Record<string, PostMeta>`) 검토
+
+---
+
+## Completed Phases
+
+### Phase 2 — Canonical Content Split ✅ SHIPPED
+**Status:** Shipped (2026-04-14)
+**PR:** kwmin122/my-blog#2 (milestone/v0.5-inhabited-world → main)
+**Verification:** 7/7 layers PASS (3 issues patched)
+**Requirements:** CORE-03, CORE-04, CONT-01
+
+### Phase 1 — Foundation & Verification ✅ SHIPPED
+**Status:** Shipped (2026-04-14)
+**PR:** kwmin122/my-blog#1 (milestone/v0.1-skeleton → main)
+**Production:** https://webbuild-gray.vercel.app
+**Verification:** 7/7 layers PASS
+**Requirements:** CORE-01, CORE-05, CORE-06, INFRA-04, PERF-05
 
 ---
 
@@ -46,7 +55,7 @@
 | 트렌드 통합은 Phase 5·6에 집중 | v0.1/v0.5는 아키텍처·콘텐츠·a11y 기반 작업, v1.0 마일스톤에서 시각 트렌드 폭발 | Active (트렌드 가지치기 금지 원칙 유지) |
 | 자체 성능 계측 스캐폴드는 Phase 1 | 게이트 통과는 Phase 8이지만 인스트루먼트는 초기 구축해야 측정 데이터 축적 가능 | Active |
 | 디자인 토큰은 v0.5(Phase 4)에서 초안, v1.0까지 lint 강제 유지 | DSGN-01 분기 구현 (REQUIREMENTS.md Notes 명시) | Active |
-| Phase 3 진입 전 월드 컨셉 확정 필수 | 디자인 doc Open Question #1 + 카메라 waypoint 배치 전제 조건 | Active (blocker) |
+| Phase 3 진입 전 월드 컨셉 확정 필수 | 디자인 doc Open Question #1 + 카메라 waypoint 배치 전제 조건 | **RESOLVED (2026-04-14) → 떠다니는 군도** |
 
 ---
 
@@ -54,12 +63,11 @@
 
 Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할 항목.
 
-### B1 — 월드 컨셉 미결정 (Phase 3 진입 blocker)
-- **원문:** 디자인 doc Open Question #1 — "떠다니는 군도 / 디지털 아틀리에 / 데이터 숲 / 뉴트로 도시" 4안 중 1택 미결정
-- **영향:** Phase 3(Camera Choreography)의 waypoint 배치·Spline 오브젝트 선정·v0.5 디자인 토큰 생태 결정 전부 이 선택에 의존
-- **언제까지:** Phase 3 착수 전 (v0.5 2026-06-30 데드라인 역산 시 2026-05-중 이전)
-- **해소 방법:** `/sunco:design-shotgun "3D 월드 비주얼 메타포 4안"` 또는 다음 office-hours 세션 후속
-- **Phase 1·2 진행 가능 여부:** OK — Phase 1(골격)·Phase 2(콘텐츠 분리)는 월드 컨셉 비의존
+### ~~B1 — 월드 컨셉 미결정~~ RESOLVED (2026-04-14)
+- **결론:** **떠다니는 군도 (Floating Archipelago)** 확정
+- 구름 바다 위 4~6개 바위섬, 섬마다 카테고리(일기·공부·일지), 카메라가 섬 사이를 비행
+- 팔레트: 하늘색 + Cloud Dancer + 따뜻한 대지색 + 네온 포인트
+- Phase 3 영향: waypoint = 섬 위 착지 포인트, Spline 오브젝트 = 섬 지형·나무·집
 
 ### B2 — 위키 미검증 주장 1차 출처 확인
 - **원문:** 디자인 doc Open Question #5 — "WebGPU 15~30배", "팬톤 2026 'Cloud Dancer'", "Safari 26 WebGPU 완전 지원", "모바일 53% 3초 이탈"
@@ -108,4 +116,22 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 
 ---
 
-*Last updated: 2026-04-14 by /sunco:roadmap (bootstrap).*
+## Vercel
+
+- **Production URL:** https://webbuild-gray.vercel.app
+- **Project:** kwmin122s-projects/webbuild
+- **Status:** Ready (deployed 2026-04-14)
+- **GitHub CI:** `.github/workflows/vercel.yml` (GitHub Actions) — main push → production, PR → preview
+- **PR:** kwmin122/my-blog#1 (milestone/v0.1-skeleton → main)
+
+---
+
+### 2026-04-14 — Phase 1 Executed
+- `/sunco:execute 1` 완료: 2/2 plans PASS, lint gate PASS
+- 5개 편차 처리 (Next.js 16 Turbopack, next lint 제거, WorldCanvasLoader 패턴)
+- INFRA-04 (Vercel CI) human action 대기 — 코드 완료, 브라우저 연결 필요
+- B3 blocker RESOLVED: R3F v9 + WebGPU 프로덕션 준비 확인
+- 커밋 13개: 54d41bd → 737f207
+- 다음: `/sunco:verify 1`
+
+*Last updated: 2026-04-14 by /sunco:execute 1.*
