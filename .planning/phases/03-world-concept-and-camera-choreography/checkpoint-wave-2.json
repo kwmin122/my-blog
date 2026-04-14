@@ -1,0 +1,63 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "03",
+  "phase_name": "world-concept-and-camera-choreography",
+  "phase_slug": "03-world-concept-and-camera-choreography",
+  "wave_completed": 2,
+  "timestamp": "2026-04-15T00:00:00Z",
+  "plans_completed": [
+    {
+      "id": "03-01",
+      "title": "Install GSAP+Lenis deps, extend worldStore with activeWaypoint, create SmoothScrollProvider",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/03-world-concept-and-camera-choreography/03-01-SUMMARY.md",
+      "last_commit": "bc5c888",
+      "files_written": [
+        "lib/gsap.ts",
+        "lib/waypoints.ts",
+        "components/providers/SmoothScrollProvider.tsx",
+        "components/providers/SmoothScrollProviderWrapper.tsx"
+      ]
+    },
+    {
+      "id": "03-02",
+      "title": "Archipelago scene geometry — island primitives, cloud plane, lighting, Spline placeholder GLBs",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/03-world-concept-and-camera-choreography/03-02-SUMMARY.md",
+      "last_commit": "7f7f66b",
+      "files_written": [
+        "components/world/FloatingIsland.tsx",
+        "components/world/SplineIslandProp.tsx",
+        "components/world/ArchipelagoScene.tsx",
+        "public/assets/raw/island-cottage.glb",
+        "public/assets/raw/island-tree.glb",
+        "public/assets/raw/island-arch.glb"
+      ]
+    },
+    {
+      "id": "03-03",
+      "title": "Camera choreography — WorldCameraRig + route-change GSAP transitions + /world ScrollTrigger flythrough + waypoint store wiring",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/03-world-concept-and-camera-choreography/03-03-SUMMARY.md",
+      "last_commit": "5a9c6f9",
+      "files_written": [
+        "components/world/WorldCameraRig.tsx",
+        "components/world/WorldScrollCamera.tsx",
+        "components/world/WorldPostWaypointSync.tsx"
+      ]
+    }
+  ],
+  "plans_pending": [],
+  "blast_radius": {
+    "risk": "LOW",
+    "files_in_scope": 18,
+    "files_transitively_affected": 4
+  },
+  "lint_gate_overrides": [],
+  "branch": "main",
+  "interrupted": false,
+  "next_wave": null
+}

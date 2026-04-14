@@ -8,23 +8,23 @@
 
 **Phase 3 — World Concept & Camera Choreography**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Planned
-**Branch:** `milestone/v0.5-inhabited-world` (shared with Phase 2)
+**Status:** Executed
+**Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:execute 3
+/sunco:verify 3
 ```
 
 ### 플랜 구조 (Wave)
 
-| Plan | Wave | Title | REQ |
-|------|------|-------|-----|
-| 03-01 | 1 | Install GSAP+Lenis deps, extend worldStore, SmoothScrollProvider | MOT-03 |
-| 03-02 | 1 | Archipelago scene geometry — islands, cloud plane, Spline stubs | INT-02 |
-| 03-03 | 2 (after 01+02) | Camera choreography — WorldCameraRig + WorldScrollCamera + waypoint wiring | CORE-02, MOT-01 |
+| Plan | Wave | Title | REQ | Status | Last Commit |
+|------|------|-------|-----|--------|-------------|
+| 03-01 | 1 | Install GSAP+Lenis deps, extend worldStore, SmoothScrollProvider | MOT-03 | ✅ PASS | bc5c888 |
+| 03-02 | 1 | Archipelago scene geometry — islands, cloud plane, Spline stubs | INT-02 | ✅ PASS | 7f7f66b |
+| 03-03 | 2 | Camera choreography — WorldCameraRig + WorldScrollCamera + waypoint wiring | CORE-02, MOT-01 | ✅ PASS | 5a9c6f9 |
 
-Wave 1 plans (03-01, 03-02) run in parallel. Wave 2 (03-03) follows.
+Wave 1 (03-01 + 03-02 parallel) + Wave 2 (03-03) — all complete, lint gate PASS.
 
 ---
 
@@ -141,3 +141,16 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:verify 1`
 
 *Last updated: 2026-04-14 by /sunco:execute 1.*
+
+---
+
+### 2026-04-15 — Phase 3 Executed
+- `/sunco:execute 3` 완료: 3/3 plans PASS, lint gate PASS, `npx next build` 0
+- Wave 1 (병렬): 03-01 (GSAP+Lenis+worldStore+SmoothScrollProvider) + 03-02 (ArchipelagoScene+GLB stubs)
+- Wave 2: 03-03 (WorldCameraRig+WorldScrollCamera+WorldPostWaypointSync)
+- 편차 2개: SmoothScrollProviderWrapper (Next.js Server Component 제약), lenis CSS를 client component로 이동
+- REQ 충족: CORE-02 (route-change interpolation), MOT-01 (GSAP ScrollTrigger flythrough), MOT-03 (Lenis smooth scroll), INT-02 (Spline userData.source tagging)
+- 커밋 14개: 920eb1d → 5a9c6f9
+- 다음: `/sunco:verify 3`
+
+*Last updated: 2026-04-15 by /sunco:execute 3.*
