@@ -3,7 +3,11 @@ import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://webbuild-gray.vercel.app'),
+  metadataBase: new URL(
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'https://webbuild-gray.vercel.app'
+  ),
   title: 'World',
   description: 'Personal blog — single continuous 3D world',
 }

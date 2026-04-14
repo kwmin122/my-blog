@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import LCPObserver from '@/components/text/LCPObserver'
 import { getPostSlugs } from '@/lib/posts'
 
@@ -15,19 +16,29 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
-  const { metadata } = await import(`@/content/posts/${slug}.mdx`)
-  return {
-    title: metadata.title,
-    description: metadata.excerpt,
-    alternates: {
-      canonical: `/text/${slug}`,
-    },
+  try {
+    const { metadata } = await import(`@/content/posts/${slug}.mdx`)
+    return {
+      title: metadata.title,
+      description: metadata.excerpt,
+      alternates: {
+        canonical: `/text/${slug}`,
+      },
+    }
+  } catch {
+    return { alternates: { canonical: `/text/${slug}` } }
   }
 }
 
 export default async function TextPage({ params }: Props) {
   const { slug } = await params
-  const { default: Post } = await import(`@/content/posts/${slug}.mdx`)
+  let Post: React.ComponentType
+  try {
+    const mod = await import(`@/content/posts/${slug}.mdx`)
+    Post = mod.default
+  } catch {
+    notFound()
+  }
   return (
     <>
       <LCPObserver />
