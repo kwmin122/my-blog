@@ -9,12 +9,12 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string }
-}): Promise<Metadata> {
-  const { slug } = params
+interface Props {
+  params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params
   try {
     const { metadata } = await import(`@/content/posts/${slug}.mdx`)
     return {
@@ -32,12 +32,8 @@ export async function generateMetadata({
   }
 }
 
-export default async function WorldSlugPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
-  const { slug } = params
+export default async function WorldSlugPage({ params }: Props) {
+  const { slug } = await params
   const { metadata } = await import(`@/content/posts/${slug}.mdx`)
 
   return (
