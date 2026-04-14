@@ -9,7 +9,7 @@
 **Phase 1 — Foundation & Verification**
 **Milestone:** M1 (v0.1 — World Skeleton)
 **Deadline:** 2026-04-28 (약 2주)
-**Status:** Planned (2026-04-14)
+**Status:** Executed (2026-04-14)
 **Branch target:** `milestone/v0.1-skeleton`
 
 ### Phase 1 요약
@@ -20,13 +20,14 @@
 
 ### 다음 액션
 ```
-/sunco:execute 1
+/sunco:verify 1
 ```
 
-### 실행 계획
-- Plan 01-01 (Wave 1): Next.js scaffold + Vercel CI — `INFRA-04`
-- Plan 01-02 (Wave 2, depends on 01-01): WorldCanvas + renderer fallback + perf.mark — `CORE-01, CORE-05, CORE-06, PERF-05`
-- Plans: `.planning/phases/01-foundation-and-verification/`
+### 실행 결과
+- Plan 01-01 (Wave 1): COMPLETE — `INFRA-04` (Vercel CI는 human action 대기)
+- Plan 01-02 (Wave 2): COMPLETE — `CORE-01, CORE-05, CORE-06, PERF-05`
+- Build: PASS | Lint: PASS | TSC: PASS
+- 상세: `.planning/phases/01-foundation-and-verification/01-VERIFICATION.md`
 
 ---
 
@@ -108,4 +109,12 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 
 ---
 
-*Last updated: 2026-04-14 by /sunco:roadmap (bootstrap).*
+### 2026-04-14 — Phase 1 Executed
+- `/sunco:execute 1` 완료: 2/2 plans PASS, lint gate PASS
+- 5개 편차 처리 (Next.js 16 Turbopack, next lint 제거, WorldCanvasLoader 패턴)
+- INFRA-04 (Vercel CI) human action 대기 — 코드 완료, 브라우저 연결 필요
+- B3 blocker RESOLVED: R3F v9 + WebGPU 프로덕션 준비 확인
+- 커밋 13개: 54d41bd → 737f207
+- 다음: `/sunco:verify 1`
+
+*Last updated: 2026-04-14 by /sunco:execute 1.*
