@@ -1,3 +1,5 @@
+import LCPObserver from '@/components/text/LCPObserver'
+
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -5,8 +7,11 @@ interface Props {
 export default async function TextPage({ params }: Props) {
   const { slug } = await params
   return (
-    <article>
-      <h1>{slug}</h1>
-    </article>
+    <>
+      <LCPObserver />
+      <article>
+        <h1>{slug}</h1>
+      </article>
+    </>
   )
 }
