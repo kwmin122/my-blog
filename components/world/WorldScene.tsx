@@ -5,6 +5,7 @@ import { Html } from '@react-three/drei'
 import { useRef } from 'react'
 import { markWorldFirstFrame } from '@/lib/perf'
 import { useWorldStore } from '@/lib/worldStore'
+import ArchipelagoScene from './ArchipelagoScene'
 
 export default function WorldScene() {
   const hasMarked = useRef(false)
@@ -19,6 +20,7 @@ export default function WorldScene() {
 
   return (
     <>
+      <ArchipelagoScene />
       {postOverlay && (
         <Html center distanceFactor={10} position={[0, 1, -3]}>
           <div
