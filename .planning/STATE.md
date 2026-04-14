@@ -109,6 +109,16 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 
 ---
 
+## Vercel
+
+- **Production URL:** https://webbuild-gray.vercel.app
+- **Project:** kwmin122s-projects/webbuild
+- **Status:** Ready (deployed 2026-04-14)
+- **GitHub CI:** `.github/workflows/vercel.yml` (GitHub Actions) — main push → production, PR → preview
+- **PR:** kwmin122/my-blog#1 (milestone/v0.1-skeleton → main)
+
+---
+
 ### 2026-04-14 — Phase 1 Executed
 - `/sunco:execute 1` 완료: 2/2 plans PASS, lint gate PASS
 - 5개 편차 처리 (Next.js 16 Turbopack, next lint 제거, WorldCanvasLoader 패턴)
