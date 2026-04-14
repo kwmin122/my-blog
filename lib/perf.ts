@@ -6,12 +6,14 @@ export function markWorldFirstFrame() {
   console.log(`[perf] /world first-frame: ${delta.toFixed(1)}ms`)
 }
 
-export function observeTextLCP() {
-  if (typeof PerformanceObserver === 'undefined') return
+// Returns the observer so callers can disconnect() on cleanup
+export function observeTextLCP(): PerformanceObserver | null {
+  if (typeof PerformanceObserver === 'undefined') return null
   const po = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
       console.log(`[perf] /text LCP: ${entry.startTime.toFixed(1)}ms`)
     }
   })
   po.observe({ type: 'largest-contentful-paint', buffered: true })
+  return po
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Canvas } from '@react-three/fiber'
@@ -19,8 +19,10 @@ function detectMode(): RendererMode {
   const testCanvas = document.createElement('canvas')
   const gl2 = testCanvas.getContext('webgl2')
   if (!gl2) return 'poster'
-  // navigator.gpu presence indicates WebGPU is likely available
-  // Actual init failure is caught in glFactory and triggers poster fallback
+  // Release test context immediately to avoid consuming a GPU context slot
+  gl2.getExtension('WEBGL_lose_context')?.loseContext()
+  // navigator.gpu presence indicates WebGPU is likely available.
+  // Actual init failure is caught in glFactory and triggers poster fallback.
   if (navigator.gpu) return 'webgpu'
   return 'webgl2'
 }
@@ -63,23 +65,33 @@ export default function WorldCanvas() {
     setMode(detectMode())
   }, [])
 
+  // Memoized so R3F doesn't see a new gl reference on every re-render and rebuild the renderer.
+  // mode is stable after initial detection (only transitions null→webgpu/webgl2/poster once).
+  const glFactory = useCallback(
+    async (props: any) => {
+      try {
+        const renderer = new THREE.WebGPURenderer({
+          ...props,
+          forceWebGL: mode === 'webgl2',
+        } as any)
+        await renderer.init()
+        const backend = (renderer as any).backend?.isWebGPUBackend ? 'webgpu' : 'webgl2'
+        console.log(`[renderer] selected: ${backend}`)
+        return renderer
+      } catch (err) {
+        // Log message only — avoid leaking stack traces in production
+        console.warn('[renderer] init failed:', err instanceof Error ? err.message : String(err))
+        setMode('poster')
+        // Throw so R3F immediately shows the Canvas fallback prop while React re-renders
+        throw err
+      }
+    },
+    [mode],
+  )
+
   // null during SSR hydration window — renders nothing until client detects mode
   if (mode === null) return null
   if (mode === 'poster') return <StaticPosterFallback />
-
-  const glFactory = async (props: any) => {
-    try {
-      const renderer = new THREE.WebGPURenderer({ ...props, forceWebGL: mode === 'webgl2' } as any)
-      await renderer.init()
-      const backend = (renderer as any).backend?.isWebGPUBackend ? 'webgpu' : 'webgl2'
-      console.log(`[renderer] selected: ${backend}`)
-      return renderer
-    } catch (err) {
-      console.warn('[renderer] init failed, switching to poster fallback', err)
-      setMode('poster')
-      return null
-    }
-  }
 
   return (
     <div

@@ -5,7 +5,8 @@ import { observeTextLCP } from '@/lib/perf'
 
 export default function LCPObserver() {
   useEffect(() => {
-    observeTextLCP()
+    const po = observeTextLCP()
+    return () => po?.disconnect()
   }, [])
   return null
 }
