@@ -6,16 +6,20 @@
 
 ## Current Phase
 
-**Phase 2 — Content Layer & MDX Pipeline**
-**Milestone:** M1 (v0.1 — World Skeleton)
-**Deadline:** 2026-04-28
-**Status:** Not started
+**Phase 2 — Canonical Content Split**
+**Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
+**Status:** Planned (2026-04-14)
 **Branch target:** TBD
 
 ### 다음 액션
 ```
-/sunco:plan 2
+/sunco:execute 2
 ```
+
+### 실행 계획
+- Plan 02-01 (Wave 1): MDX Pipeline + Content Infrastructure — `CORE-03, CONT-01`
+- Plan 02-02 (Wave 2, depends on 02-01): World Route Wiring + drei Html Overlay — `CORE-04`
+- Plans: `.planning/phases/02-canonical-content-split/`
 
 ---
 
