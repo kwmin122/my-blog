@@ -1,13 +1,14 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { Canvas } from '@react-three/fiber'
 import { extend } from '@react-three/fiber'
 import * as THREE from 'three/webgpu'
 import WorldScene from './WorldScene'
 
 // Register three/webgpu classes with R3F's JSX catalog
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 extend(THREE as any)
 
 type RendererMode = 'webgpu' | 'webgl2' | 'poster'
@@ -27,10 +28,12 @@ function detectMode(): RendererMode {
 function StaticPosterFallback() {
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: 0, background: '#0a0a0a' }}>
-      <img
+      <Image
         src="/poster.jpg"
         alt="3D World — upgrade your browser to explore"
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        fill
+        style={{ objectFit: 'cover' }}
+        priority
       />
       <div
         style={{
@@ -40,11 +43,12 @@ function StaticPosterFallback() {
           transform: 'translateX(-50%)',
           color: 'white',
           whiteSpace: 'nowrap',
+          zIndex: 1,
         }}
       >
-        <a href="/text" style={{ color: 'inherit', textDecoration: 'underline' }}>
+        <Link href="/text" style={{ color: 'inherit', textDecoration: 'underline' }}>
           텍스트로 읽기 →
-        </a>
+        </Link>
       </div>
     </div>
   )
@@ -54,6 +58,8 @@ export default function WorldCanvas() {
   const [mode, setMode] = useState<RendererMode | null>(null)
 
   useEffect(() => {
+    // detectMode() is client-only browser detection; setState here is intentional hydration guard
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMode(detectMode())
   }, [])
 
@@ -61,16 +67,10 @@ export default function WorldCanvas() {
   if (mode === null) return null
   if (mode === 'poster') return <StaticPosterFallback />
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const glFactory = async (props: any) => {
     try {
-      const renderer = new THREE.WebGPURenderer({
-        ...props,
-        forceWebGL: mode === 'webgl2',
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } as any)
+      const renderer = new THREE.WebGPURenderer({ ...props, forceWebGL: mode === 'webgl2' } as any)
       await renderer.init()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const backend = (renderer as any).backend?.isWebGPUBackend ? 'webgpu' : 'webgl2'
       console.log(`[renderer] selected: ${backend}`)
       return renderer
@@ -86,7 +86,6 @@ export default function WorldCanvas() {
       data-canvas-id="world-canvas"
       style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
     >
-      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       <Canvas gl={glFactory as any} fallback={<StaticPosterFallback />}>
         <WorldScene />
       </Canvas>

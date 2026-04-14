@@ -1,11 +1,6 @@
 import type { Metadata } from 'next'
-import dynamic from 'next/dynamic'
+import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
 import './globals.css'
-
-const WorldCanvas = dynamic(
-  () => import('@/components/world/WorldCanvas'),
-  { ssr: false }
-)
 
 export const metadata: Metadata = {
   title: 'World',
@@ -20,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <WorldCanvas />
+        <WorldCanvasLoader />
         <main id="page-content">{children}</main>
       </body>
     </html>
