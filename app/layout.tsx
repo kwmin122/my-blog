@@ -21,6 +21,13 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <a
+          href="#page-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:px-4 focus:py-2 focus:rounded focus:outline-none"
+          style={{ background: 'var(--color-surface)', color: 'var(--color-text-primary)', boxShadow: 'var(--focus-ring)' }}
+        >
+          본문으로 건너뛰기
+        </a>
         <WorldCanvasLoader />
         <SmoothScrollProviderWrapper>
           <main id="page-content">{children}</main>
