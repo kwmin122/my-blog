@@ -19,6 +19,7 @@ export default function WorldCameraRig() {
       z: position.z,
       duration: 1.5,
       ease: 'power2.inOut',
+      overwrite: 'auto', // kill any competing scroll-driven tween on camera.position
       onUpdate: () => {
         camera.lookAt(target.x, target.y, target.z)
       },
