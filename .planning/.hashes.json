@@ -2,7 +2,7 @@
   ".planning/PROJECT.md": "1c943fe271452b04619dfa1df1c651be05d262cd8deec142586b6deca23c3197",
   ".planning/REQUIREMENTS.md": "53dde752861f772551b0c38f33642123065f769435d0611e92f7c81b1a8cbfc8",
   ".planning/ROADMAP.md": "b49581181d076e1cca20414bb43d0c7da97e509b4f5e031a2910a3f6b6227720",
-  ".planning/STATE.md": "d54d30b6072a7f0fc2518b28d2b5d64cba2c4c7014ea474fdb37b461184c10ef",
+  ".planning/STATE.md": "de4f59d7f95d2603e47bcf2be000b8912f825634911d480c30833325ea9a8dad",
   ".planning/phases/01-foundation-and-verification/01-01-PLAN.md": "a2e640019c40f6f10096854beb5c9e20ab8de89f4ab01b70ab95e8b5382cb555",
   ".planning/phases/01-foundation-and-verification/01-01-SUMMARY.md": "4d6d23e9eda561aee8e21c155901c31237722729268289c17b16ccaa149acc25",
   ".planning/phases/01-foundation-and-verification/01-02-PLAN.md": "74788c662b93cde0f52d6460b595df0835c425d3ef1a95e0e1e0bed9fce241e9",
@@ -12,6 +12,11 @@
   ".planning/phases/01-foundation-and-verification/checkpoint-wave-1.json": "dad2a6bde47dcb99d20bdab63531d4e259d3b0e2c1a86db4a5adc4b466312a89",
   ".planning/phases/01-foundation-and-verification/checkpoint-wave-2.json": "1cf6ff9cd9a2635944dec959cf164e8a6939ef2188b484e4d05fdbb6d45fd8bc",
   ".planning/phases/02-canonical-content-split/02-01-PLAN.md": "7f66b9ea01cc3a5ae015f8611f351880318d91b506249f9fad89df3ad81394b7",
+  ".planning/phases/02-canonical-content-split/02-01-SUMMARY.md": "37a9e522783476bc4d156fc9c7d7dc651309aecfd788d0538ef44822c78d31b1",
   ".planning/phases/02-canonical-content-split/02-02-PLAN.md": "9b9df45ddaaf95c2cdd950ca1cb0024be5c8eee20399f2ec4f327a7fbd051e74",
-  ".planning/phases/02-canonical-content-split/02-RESEARCH.md": "684a63a65bb83f85db1f14ed49dcfa6f25d041948a018982426b93f9e6a92391"
+  ".planning/phases/02-canonical-content-split/02-02-SUMMARY.md": "cc09ae8aa0fcc31c3a13b0e96230df968b2882a461a81a4f1f812689bb5c92ff",
+  ".planning/phases/02-canonical-content-split/02-RESEARCH.md": "684a63a65bb83f85db1f14ed49dcfa6f25d041948a018982426b93f9e6a92391",
+  ".planning/phases/02-canonical-content-split/02-VERIFICATION.md": "67d9632812dead49bbbc45c7b2337ed50b09f71c0f66afbf378d43fbd9b6a630",
+  ".planning/phases/02-canonical-content-split/checkpoint-wave-1.json": "144fd5e7657a5b524c03bba5a2395933ed32a079d4ce250c3a1ad41ccac03f65",
+  ".planning/phases/02-canonical-content-split/checkpoint-wave-2.json": "ebaa21c8ce309fada46db63ebc39a69bbad7092d4903d70ed639e77a4b4cad61"
 }

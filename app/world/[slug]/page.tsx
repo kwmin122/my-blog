@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getPostSlugs } from '@/lib/posts'
 import WorldPostPanel from '@/components/world/WorldPostPanel'
+import WorldPostWaypointSync from '@/components/world/WorldPostWaypointSync'
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs()
@@ -38,7 +39,7 @@ export default async function WorldSlugPage({ params }: Props) {
   try {
     const { metadata } = await import(`@/content/posts/${slug}.mdx`)
     return (
-      <WorldPostPanel slug={slug} title={metadata.title} excerpt={metadata.excerpt} />
+      <><WorldPostPanel slug={slug} title={metadata.title} excerpt={metadata.excerpt} /><WorldPostWaypointSync slug={slug} /></>
     )
   } catch {
     notFound()

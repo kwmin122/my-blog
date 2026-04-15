@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
+import SmoothScrollProviderWrapper from '@/components/providers/SmoothScrollProviderWrapper'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -21,7 +22,9 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <WorldCanvasLoader />
-        <main id="page-content">{children}</main>
+        <SmoothScrollProviderWrapper>
+          <main id="page-content">{children}</main>
+        </SmoothScrollProviderWrapper>
       </body>
     </html>
   )

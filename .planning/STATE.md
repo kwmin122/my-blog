@@ -6,19 +6,23 @@
 
 ## Current Phase
 
-**Phase 3 — World Concept & Camera Choreography**
+**Phase 4 — Design System & Accessibility Baseline**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Not started
-**Branch:** `milestone/v0.5-inhabited-world` (shared with Phase 2)
+**Status:** Ready to Plan
+**Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:plan 3
+/sunco:plan 4
 ```
 
-### 주의사항
-- Blocker B1 해소 필요: 월드 컨셉 4안 중 1택 (떠다니는 군도 / 디지털 아틀리에 / 데이터 숲 / 뉴트로 도시)
-- Phase 3 planing 전 store shape 설계 (`postMeta: Record<string, PostMeta>`) 검토
+---
+
+## Phase 3 — World Concept & Camera Choreography ✅ SHIPPED
+**Status:** Shipped (2026-04-15)
+**PR:** kwmin122/my-blog#3 (phase/03-world-concept-and-camera-choreography → main)
+**Verification:** 7/7 layers PASS (2 issues fixed: ST global kill, camera tween conflict)
+**Requirements:** CORE-02, MOT-01, MOT-03, INT-02
 
 ---
 
@@ -135,3 +139,26 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:verify 1`
 
 *Last updated: 2026-04-14 by /sunco:execute 1.*
+
+---
+
+### 2026-04-15 — Phase 3 Executed
+- `/sunco:execute 3` 완료: 3/3 plans PASS, lint gate PASS, `npx next build` 0
+- Wave 1 (병렬): 03-01 (GSAP+Lenis+worldStore+SmoothScrollProvider) + 03-02 (ArchipelagoScene+GLB stubs)
+- Wave 2: 03-03 (WorldCameraRig+WorldScrollCamera+WorldPostWaypointSync)
+- 편차 2개: SmoothScrollProviderWrapper (Next.js Server Component 제약), lenis CSS를 client component로 이동
+- REQ 충족: CORE-02 (route-change interpolation), MOT-01 (GSAP ScrollTrigger flythrough), MOT-03 (Lenis smooth scroll), INT-02 (Spline userData.source tagging)
+- 커밋 14개: 920eb1d → 5a9c6f9
+- 다음: `/sunco:verify 3`
+
+*Last updated: 2026-04-15 by /sunco:execute 3.*
+
+---
+
+### 2026-04-15 — Phase 3 Shipped
+- `/sunco:verify 3` 완료: 7/7 layers PASS, 2 이슈 수정 (ST global kill, camera 충돌)
+- `/sunco:ship 3` 완료: PR kwmin122/my-blog#3 생성
+- 브랜치: `phase/03-world-concept-and-camera-choreography` → main
+- 다음: PR 머지 후 `/sunco:plan 4`
+
+*Last updated: 2026-04-15 by /sunco:ship 3.*
