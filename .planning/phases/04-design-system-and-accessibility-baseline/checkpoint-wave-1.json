@@ -1,0 +1,55 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "04",
+  "phase_name": "design-system-and-accessibility-baseline",
+  "phase_slug": "04-design-system-and-accessibility-baseline",
+  "wave_completed": 1,
+  "timestamp": "2026-04-15T00:00:00Z",
+  "plans_completed": [
+    {
+      "id": "04-01",
+      "title": "Design Tokens + ESLint Lint Gate + Canvas Aria-Hidden",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/04-design-system-and-accessibility-baseline/04-01-SUMMARY.md",
+      "last_commit": "684dd53",
+      "files_written": [
+        "tokens/tokens.ts",
+        "app/globals.css",
+        "eslint.config.mjs",
+        "components/world/WorldCanvas.tsx",
+        "components/world/ArchipelagoScene.tsx",
+        "components/world/FloatingIsland.tsx"
+      ]
+    },
+    {
+      "id": "04-02",
+      "title": "Reduced-Motion Fallback + Phase 3 Cleanup",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/04-design-system-and-accessibility-baseline/04-02-SUMMARY.md",
+      "last_commit": "058726b",
+      "files_written": [
+        "components/world/WorldCameraRig.tsx",
+        "components/world/WorldScrollCamera.tsx"
+      ]
+    }
+  ],
+  "plans_pending": [
+    {
+      "id": "04-03",
+      "title": "A11Y Baseline + Keyboard Waypoint Navigation",
+      "wave": 2,
+      "status": "pending"
+    }
+  ],
+  "blast_radius": {
+    "risk": "MEDIUM",
+    "files_in_scope": 14,
+    "files_transitively_affected": 4
+  },
+  "lint_gate_overrides": [],
+  "branch": "main",
+  "interrupted": false,
+  "next_wave": 2
+}

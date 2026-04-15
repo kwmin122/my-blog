@@ -8,12 +8,12 @@
 
 **Phase 4 — Design System & Accessibility Baseline**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Planned
+**Status:** Executed
 **Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:execute 4
+/sunco:verify 4
 ```
 
 ---
@@ -174,3 +174,16 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:execute 4`
 
 *Last updated: 2026-04-15 by /sunco:plan 4.*
+
+---
+
+### 2026-04-15 — Phase 4 Executed
+- `/sunco:execute 4` 완료: 3/3 plans PASS, lint gate PASS
+- Wave 1 (병렬): 04-01 (tokens+ESLint+aria-hidden, 8 commits) + 04-02 (reduced-motion matchMedia, 2 commits)
+- Wave 2: 04-03 (skip-nav+WorldKeyboardNav+time element+StrictMode guard, 6 commits)
+- 편차 1개: eslint config `export default []` → `const config = []; export default config` (import/no-anonymous-default-export 경고 해소)
+- REQ 충족: DSGN-01 (design tokens + lint gate), MOT-04 (prefers-reduced-motion ≤200ms cut), A11Y-03 (skip-nav+time+SR route), INT-03 (WorldKeyboardNav listbox+Tab+Enter)
+- 커밋 16개: 0aa9ef0 → 95718bc
+- 다음: `/sunco:verify 4`
+
+*Last updated: 2026-04-15 by /sunco:execute 4.*
