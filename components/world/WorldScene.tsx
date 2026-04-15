@@ -8,6 +8,7 @@ import { useWorldStore } from '@/lib/worldStore'
 import ArchipelagoScene from './ArchipelagoScene'
 import WorldCameraRig from './WorldCameraRig'
 import WorldScrollCamera from './WorldScrollCamera'
+import UIGlassPanel from '@/components/ui/UIGlassPanel'
 
 export default function WorldScene() {
   const hasMarked = useRef(false)
@@ -27,20 +28,12 @@ export default function WorldScene() {
       <ArchipelagoScene />
       {postOverlay && (
         <Html center distanceFactor={10} position={[0, 1, -3]}>
-          <div
-            style={{
-              background: 'rgba(0,0,0,0.7)',
-              padding: '1rem',
-              color: 'white',
-              pointerEvents: 'none',
-              minWidth: '200px',
-            }}
-          >
+          <UIGlassPanel style={{ padding: '1rem', minWidth: '200px', pointerEvents: 'none' }}>
             <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', margin: '0 0 0.5rem' }}>
               {postOverlay.title}
             </h2>
             <p style={{ margin: 0 }}>{postOverlay.excerpt}</p>
-          </div>
+          </UIGlassPanel>
         </Html>
       )}
     </>
