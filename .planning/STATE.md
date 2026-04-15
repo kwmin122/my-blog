@@ -8,12 +8,12 @@
 
 **Phase 5 — Visual Signature: Shaders & Glass**
 **Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Not started
+**Status:** Planned
 **Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:plan 5
+/sunco:execute 5
 ```
 
 ---
@@ -205,3 +205,14 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: PR 머지 후 `/sunco:plan 5`
 
 *Last updated: 2026-04-15 by /sunco:ship 4.*
+
+---
+
+### 2026-04-15 — Phase 5 Planned
+- `/sunco:plan 5` 완료: 3 plans PASS (체커 통과, WARN 1개 수정 — 05-01 checklist fog + background 제거 둘 다 검증)
+- Wave 1 (병렬): 05-01 (TSL CloudSeaSky 셰이더 — VIS-01), 05-02 (tokens.ts baseTone+accent + colorAudit.ts — VIS-03)
+- Wave 2: 05-03 (UIGlassPanel + useScrollOpacity + globals.css + UIOverlay 와이어업 — VIS-02, depends on Wave 1)
+- REQ 커버: VIS-01, VIS-02, VIS-03
+- 다음: `/sunco:execute 5`
+
+*Last updated: 2026-04-15 by /sunco:plan 5.*
