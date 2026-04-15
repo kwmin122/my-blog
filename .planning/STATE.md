@@ -6,15 +6,23 @@
 
 ## Current Phase
 
-**Phase 5 — Visual Signature: Shaders & Glass**
+**Phase 6 — Motion Morphing & Micro-Interactions**
 **Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Executed
+**Status:** Not started
 **Branch:** `milestone/v1.0-launch`
 
 ### 다음 액션
 ```
-/sunco:verify 5
+/sunco:plan 6
 ```
+
+---
+
+## Phase 5 — Visual Signature: Shaders & Glass ✅ SHIPPED
+**Status:** Shipped (2026-04-16)
+**PR:** kwmin122/my-blog#5 (milestone/v1.0-launch → main)
+**Verification:** 7/7 layers PASS (1 HIGH + 3 WARNs fixed: UIOverlay pointerEvents, sky direction, dispose, chroma metric)
+**Requirements:** VIS-01, VIS-02, VIS-03
 
 ---
 
@@ -216,6 +224,20 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:execute 5`
 
 *Last updated: 2026-04-15 by /sunco:plan 5.*
+
+---
+
+### 2026-04-16 — Phase 5 Shipped
+- `/sunco:verify 5` 완료: 7/7 layers PASS (1 HIGH + 3 WARNs fixed)
+  - HIGH: UIOverlay `pointerEvents:none` 제거 (commit `0b96131`)
+  - WARN: CloudSeaSky 카메라 상대 방향 수정 `positionWorld.sub(cameraPosition)` (commit `0944c00`)
+  - WARN: NodeMaterial `dispose()` 누락 — GPU 리소스 누수 수정 (commit `0944c00`)
+  - WARN: colorAudit HSL saturation → raw delta chroma proxy (commit `0944c00`)
+- `/sunco:ship 5` 완료: PR kwmin122/my-blog#5 생성
+- 브랜치: `milestone/v1.0-launch` → main
+- 다음: PR 머지 후 `/sunco:plan 6`
+
+*Last updated: 2026-04-16 by /sunco:ship 5.*
 
 ---
 
