@@ -2,13 +2,14 @@
 
 import FloatingIsland from './FloatingIsland'
 import SplineIslandProp from './SplineIslandProp'
+import { tokens } from '@/tokens/tokens'
 
 export default function ArchipelagoScene() {
   return (
     <>
       {/* Sky atmosphere */}
-      <fog attach="fog" args={['#a8d4f5', 20, 80]} />
-      <color attach="background" args={['#a8d4f5']} />
+      <fog attach="fog" args={[tokens.scene.sky, 20, 80]} />
+      <color attach="background" args={[tokens.scene.sky]} />
 
       {/* Lighting */}
       <ambientLight intensity={0.6} />
@@ -16,14 +17,14 @@ export default function ArchipelagoScene() {
         position={[10, 20, 10]}
         intensity={1.2}
         castShadow={false}
-        color="#fff8e8"
+        color={tokens.scene.sunlight}
       />
 
       {/* Cloud sea plane */}
       <mesh position={[0, -2.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
         <planeGeometry args={[120, 120]} />
         <meshStandardMaterial
-          color="#f0f4ff"
+          color={tokens.scene.cloud}
           transparent
           opacity={0.72}
           roughness={1}
