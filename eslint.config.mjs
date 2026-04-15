@@ -23,7 +23,7 @@ const noHardcodedHexRule = {
   },
 }
 
-export default [
+const config = [
   ...(Array.isArray(nextConfig) ? nextConfig : [nextConfig]),
   {
     // tokens/tokens.ts is excluded — it IS the source of hex values
@@ -38,3 +38,5 @@ export default [
     },
   },
 ]
+
+export default config
