@@ -8,12 +8,12 @@
 
 **Phase 5 — Visual Signature: Shaders & Glass**
 **Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Planned
-**Branch:** `main`
+**Status:** Executed
+**Branch:** `milestone/v1.0-launch`
 
 ### 다음 액션
 ```
-/sunco:execute 5
+/sunco:verify 5
 ```
 
 ---
@@ -216,3 +216,16 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:execute 5`
 
 *Last updated: 2026-04-15 by /sunco:plan 5.*
+
+---
+
+### 2026-04-15 — Phase 5 Executed
+- `/sunco:execute 5` 완료: 3/3 plans PASS, lint gate PASS, `npx next build` 0
+- Wave 1 (병렬): 05-01 (CloudSeaSky TSL shader + ArchipelagoScene fog 제거, 4 commits) + 05-02 (tokens.ts baseTone/accent + colorAudit.ts, 2 commits)
+- Wave 2: 05-03 (UIGlassPanel + UIOverlay + useScrollOpacity + globals.css + wire-up, 6 commits)
+- 편차 1개: eslint.config.mjs에 `.claude/**` ignore 추가 (병렬 실행 worktree false-positive 수정)
+- REQ 충족: VIS-01 (TSL NodeMaterial CloudSeaSky), VIS-02 (backdrop-filter + --panel-opacity 0.4↔0.85), VIS-03 (baseTone+accent.* palette lock + assertLightColor dev guard)
+- 커밋 10개: d068106 → c72253d
+- 다음: `/sunco:verify 5`
+
+*Last updated: 2026-04-15 by /sunco:execute 5.*

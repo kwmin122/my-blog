@@ -1,0 +1,60 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "05",
+  "phase_name": "visual-signature-shaders-and-glass",
+  "phase_slug": "05-visual-signature-shaders-and-glass",
+  "wave_completed": 2,
+  "timestamp": "2026-04-15T00:00:00Z",
+  "plans_completed": [
+    {
+      "id": "05-01",
+      "title": "TSL CloudSeaSky Shader (VIS-01)",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/05-visual-signature-shaders-and-glass/05-01-SUMMARY.md",
+      "last_commit": "08c0a58",
+      "files_written": [
+        "shaders/CloudSeaSky.tsx",
+        "components/world/ArchipelagoScene.tsx"
+      ]
+    },
+    {
+      "id": "05-02",
+      "title": "Palette Lock — tokens.ts named exports + colorAudit.ts (VIS-03)",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/05-visual-signature-shaders-and-glass/05-02-SUMMARY.md",
+      "last_commit": "cfee737",
+      "files_written": [
+        "tokens/tokens.ts",
+        "lib/colorAudit.ts"
+      ]
+    },
+    {
+      "id": "05-03",
+      "title": "Liquid Glass UI — UIGlassPanel + useScrollOpacity + UIOverlay wire-up (VIS-02)",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/05-visual-signature-shaders-and-glass/05-03-SUMMARY.md",
+      "last_commit": "current",
+      "files_written": [
+        "components/ui/UIGlassPanel.tsx",
+        "lib/useScrollOpacity.ts",
+        "app/globals.css",
+        "components/world/WorldScene.tsx",
+        "app/world/page.tsx",
+        "app/layout.tsx"
+      ]
+    }
+  ],
+  "plans_pending": [],
+  "blast_radius": {
+    "risk": "LOW",
+    "files_in_scope": 10,
+    "files_transitively_affected": 2
+  },
+  "lint_gate_overrides": [],
+  "branch": "milestone/v1.0-launch",
+  "interrupted": false,
+  "next_wave": null
+}
