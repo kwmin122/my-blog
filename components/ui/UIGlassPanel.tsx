@@ -23,7 +23,7 @@ export default function UIGlassPanel({
 
 export function UIOverlay({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 10 }}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 10 }}>
       {children}
     </div>
   )
