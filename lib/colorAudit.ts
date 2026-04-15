@@ -32,9 +32,9 @@ function parseChroma(color: unknown): number | null {
     const max = Math.max(r, g, b)
     const min = Math.min(r, g, b)
     const delta = max - min
-    const l = (max + min) / 2
-    const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1))
-    return s
+    // Use raw delta (max - min) as chroma proxy.
+    // HSL saturation formula inflates to 1.0 for near-white/black (#fff8e8 → s=1.0 despite low chroma).
+    return delta
   }
 
   return null

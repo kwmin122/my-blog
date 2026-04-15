@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect } from 'react'
 import * as THREE from 'three/webgpu'
-import { Fn, uniform, vec4, float, normalize, mix, smoothstep, sin, time, positionWorld } from 'three/tsl'
+import { Fn, uniform, vec4, float, normalize, mix, smoothstep, sin, time, positionWorld, cameraPosition } from 'three/tsl'
 import { tokens } from '@/tokens/tokens'
 
 export default function CloudSeaSky() {
@@ -17,8 +17,8 @@ export default function CloudSeaSky() {
 
     // TSL colorNode: compute horizon gradient based on world elevation angle
     const skyColorFn = Fn(() => {
-      // Normalized direction from camera towards fragment
-      const dir = normalize(positionWorld)
+      // Normalized direction from camera towards fragment (camera-relative, not world-fixed)
+      const dir = normalize(positionWorld.sub(cameraPosition))
 
       // elevation: y component of normalized position
       // smoothstep maps [−0.1, 0.35] → [0, 1] (horizon → zenith)
@@ -42,6 +42,8 @@ export default function CloudSeaSky() {
 
     return material
   }, [])
+
+  useEffect(() => () => { mat.dispose() }, [mat])
 
   return (
     <mesh ref={meshRef} scale={[500, 500, 500]}>
