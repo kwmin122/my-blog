@@ -6,25 +6,23 @@
 
 ## Current Phase
 
-**Phase 3 — World Concept & Camera Choreography**
+**Phase 4 — Design System & Accessibility Baseline**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Executed
+**Status:** Ready to Plan
 **Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:verify 3
+/sunco:plan 4
 ```
 
-### 플랜 구조 (Wave)
+---
 
-| Plan | Wave | Title | REQ | Status | Last Commit |
-|------|------|-------|-----|--------|-------------|
-| 03-01 | 1 | Install GSAP+Lenis deps, extend worldStore, SmoothScrollProvider | MOT-03 | ✅ PASS | bc5c888 |
-| 03-02 | 1 | Archipelago scene geometry — islands, cloud plane, Spline stubs | INT-02 | ✅ PASS | 7f7f66b |
-| 03-03 | 2 | Camera choreography — WorldCameraRig + WorldScrollCamera + waypoint wiring | CORE-02, MOT-01 | ✅ PASS | 5a9c6f9 |
-
-Wave 1 (03-01 + 03-02 parallel) + Wave 2 (03-03) — all complete, lint gate PASS.
+## Phase 3 — World Concept & Camera Choreography ✅ SHIPPED
+**Status:** Shipped (2026-04-15)
+**PR:** kwmin122/my-blog#3 (phase/03-world-concept-and-camera-choreography → main)
+**Verification:** 7/7 layers PASS (2 issues fixed: ST global kill, camera tween conflict)
+**Requirements:** CORE-02, MOT-01, MOT-03, INT-02
 
 ---
 
@@ -154,3 +152,13 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:verify 3`
 
 *Last updated: 2026-04-15 by /sunco:execute 3.*
+
+---
+
+### 2026-04-15 — Phase 3 Shipped
+- `/sunco:verify 3` 완료: 7/7 layers PASS, 2 이슈 수정 (ST global kill, camera 충돌)
+- `/sunco:ship 3` 완료: PR kwmin122/my-blog#3 생성
+- 브랜치: `phase/03-world-concept-and-camera-choreography` → main
+- 다음: PR 머지 후 `/sunco:plan 4`
+
+*Last updated: 2026-04-15 by /sunco:ship 3.*
