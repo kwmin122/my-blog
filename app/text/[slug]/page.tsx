@@ -33,9 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function TextPage({ params }: Props) {
   const { slug } = await params
   let Post: React.ComponentType
+  let postDate: string | undefined
   try {
     const mod = await import(`@/content/posts/${slug}.mdx`)
     Post = mod.default
+    postDate = mod.metadata?.date as string | undefined
   } catch {
     notFound()
   }
@@ -43,6 +45,11 @@ export default async function TextPage({ params }: Props) {
     <>
       <LCPObserver />
       <article className="prose mx-auto px-4 py-8 max-w-2xl">
+        {postDate && (
+          <time dateTime={postDate} className="block text-sm text-[--color-text-muted] mb-4">
+            {postDate}
+          </time>
+        )}
         <Post />
       </article>
     </>
