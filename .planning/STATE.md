@@ -6,15 +6,23 @@
 
 ## Current Phase
 
-**Phase 4 — Design System & Accessibility Baseline**
-**Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Executed
+**Phase 5 — Visual Signature: Shaders & Glass**
+**Milestone:** M3 (v1.0 — 2026-12-31)
+**Status:** Not started
 **Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:verify 4
+/sunco:plan 5
 ```
+
+---
+
+## Phase 4 — Design System & Accessibility Baseline ✅ SHIPPED
+**Status:** Shipped (2026-04-15)
+**PR:** kwmin122/my-blog#4 (phase/04-design-system-and-accessibility-baseline → main)
+**Verification:** 7/7 layers PASS (Codex P2 fixed: .hashes.json stale hash)
+**Requirements:** DSGN-01, MOT-04, A11Y-03, INT-03
 
 ---
 
@@ -187,3 +195,13 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:verify 4`
 
 *Last updated: 2026-04-15 by /sunco:execute 4.*
+
+---
+
+### 2026-04-15 — Phase 4 Shipped
+- `/sunco:verify 4` 완료: 7/7 layers PASS, Codex P2 수정 (.hashes.json 스테일 해시 + 6개 Phase 4 artifact 추가)
+- `/sunco:ship 4` 완료: PR kwmin122/my-blog#4 생성
+- 브랜치: `phase/04-design-system-and-accessibility-baseline` → main
+- 다음: PR 머지 후 `/sunco:plan 5`
+
+*Last updated: 2026-04-15 by /sunco:ship 4.*
