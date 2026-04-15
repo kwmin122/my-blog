@@ -8,6 +8,9 @@ interface Props { slug: string }
 
 export default function WorldPostWaypointSync({ slug }: Props) {
   useEffect(() => {
+    if (!WAYPOINTS[slug]) {
+      console.warn('[waypoint] unknown slug:', slug, '— falling back to home')
+    }
     const waypoint = WAYPOINTS[slug] ?? WAYPOINTS.home
     setActiveWaypoint(waypoint)
     return () => {
