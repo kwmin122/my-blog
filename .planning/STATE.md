@@ -8,12 +8,12 @@
 
 **Phase 4 — Design System & Accessibility Baseline**
 **Milestone:** M2 (v0.5 — Inhabited World, 2026-06-30)
-**Status:** Ready to Plan
+**Status:** Planned
 **Branch:** `main`
 
 ### 다음 액션
 ```
-/sunco:plan 4
+/sunco:execute 4
 ```
 
 ---
@@ -162,3 +162,15 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: PR 머지 후 `/sunco:plan 4`
 
 *Last updated: 2026-04-15 by /sunco:ship 3.*
+
+---
+
+### 2026-04-15 — Phase 4 Planned
+- PR kwmin122/my-blog#3 머지 완료 (phase/03-world-concept-and-camera-choreography → main)
+- `/sunco:plan 4` 완료: 3 plans PASS (9/9 체커 통과, 2회 반복: 스코프 이슈 1개 수정)
+- Wave 1 (병렬): 04-01 (tokens+eslint+canvas-aria), 04-02 (reduced-motion+P3-cleanup)
+- Wave 2: 04-03 (a11y+keyboard-nav, depends on 04-01)
+- REQ 커버: DSGN-01, MOT-04, A11Y-03, INT-03
+- 다음: `/sunco:execute 4`
+
+*Last updated: 2026-04-15 by /sunco:plan 4.*
