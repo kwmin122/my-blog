@@ -44,3 +44,11 @@ export type TokenColor    = typeof tokens.color
 export type TokenEasing   = typeof tokens.easing
 export type TokenLighting = typeof tokens.lighting
 export type TokenScene    = typeof tokens.scene
+
+export const baseTone = tokens.color.base
+export const accent = {
+  neon:  tokens.color.accentNeon,
+  sky:   tokens.color.accentSky,
+  light: tokens.color.accentLight,
+} as const
+export type AccentPalette = typeof accent
