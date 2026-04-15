@@ -29,7 +29,7 @@ function detectMode(): RendererMode {
 
 function StaticPosterFallback() {
   return (
-    <div style={{ position: 'fixed', inset: 0, zIndex: 0, background: '#0a0a0a' }}>
+    <div style={{ position: 'fixed', inset: 0, zIndex: 0, background: 'var(--color-base)' }}>
       <Image
         src="/poster.jpg"
         alt="3D World — upgrade your browser to explore"
@@ -96,6 +96,7 @@ export default function WorldCanvas() {
   return (
     <div
       data-canvas-id="world-canvas"
+      aria-hidden="true"
       style={{ position: 'fixed', inset: 0, zIndex: 0, pointerEvents: 'none' }}
     >
       <Canvas gl={glFactory as any} fallback={<StaticPosterFallback />}>
