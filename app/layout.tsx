@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
 import SmoothScrollProviderWrapper from '@/components/providers/SmoothScrollProviderWrapper'
+import { UIOverlay } from '@/components/ui/UIGlassPanel'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -29,9 +30,11 @@ export default function RootLayout({
           본문으로 건너뛰기
         </a>
         <WorldCanvasLoader />
-        <SmoothScrollProviderWrapper>
-          <main id="page-content">{children}</main>
-        </SmoothScrollProviderWrapper>
+        <UIOverlay>
+          <SmoothScrollProviderWrapper>
+            <main id="page-content">{children}</main>
+          </SmoothScrollProviderWrapper>
+        </UIOverlay>
       </body>
     </html>
   )
