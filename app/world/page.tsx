@@ -4,10 +4,13 @@ import { useEffect } from 'react'
 import { useWorldStore } from '@/lib/worldStore'
 import { WAYPOINTS } from '@/lib/waypoints'
 import WorldKeyboardNav from '@/components/world/WorldKeyboardNav'
+import useScrollOpacity from '@/lib/useScrollOpacity'
 
 export default function WorldPage() {
   const setActiveWaypoint = useWorldStore((s) => s.setActiveWaypoint)
   const setIsHomePage = useWorldStore((s) => s.setIsHomePage)
+
+  useScrollOpacity()
 
   useEffect(() => {
     setActiveWaypoint(WAYPOINTS.home)

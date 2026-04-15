@@ -6,15 +6,23 @@
 
 ## Current Phase
 
-**Phase 5 — Visual Signature: Shaders & Glass**
+**Phase 6 — Motion Morphing & Micro-Interactions**
 **Milestone:** M3 (v1.0 — 2026-12-31)
 **Status:** Not started
-**Branch:** `main`
+**Branch:** `milestone/v1.0-launch`
 
 ### 다음 액션
 ```
-/sunco:plan 5
+/sunco:plan 6
 ```
+
+---
+
+## Phase 5 — Visual Signature: Shaders & Glass ✅ SHIPPED
+**Status:** Shipped (2026-04-16)
+**PR:** kwmin122/my-blog#5 (milestone/v1.0-launch → main)
+**Verification:** 7/7 layers PASS (1 HIGH + 3 WARNs fixed: UIOverlay pointerEvents, sky direction, dispose, chroma metric)
+**Requirements:** VIS-01, VIS-02, VIS-03
 
 ---
 
@@ -205,3 +213,41 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: PR 머지 후 `/sunco:plan 5`
 
 *Last updated: 2026-04-15 by /sunco:ship 4.*
+
+---
+
+### 2026-04-15 — Phase 5 Planned
+- `/sunco:plan 5` 완료: 3 plans PASS (체커 통과, WARN 1개 수정 — 05-01 checklist fog + background 제거 둘 다 검증)
+- Wave 1 (병렬): 05-01 (TSL CloudSeaSky 셰이더 — VIS-01), 05-02 (tokens.ts baseTone+accent + colorAudit.ts — VIS-03)
+- Wave 2: 05-03 (UIGlassPanel + useScrollOpacity + globals.css + UIOverlay 와이어업 — VIS-02, depends on Wave 1)
+- REQ 커버: VIS-01, VIS-02, VIS-03
+- 다음: `/sunco:execute 5`
+
+*Last updated: 2026-04-15 by /sunco:plan 5.*
+
+---
+
+### 2026-04-16 — Phase 5 Shipped
+- `/sunco:verify 5` 완료: 7/7 layers PASS (1 HIGH + 3 WARNs fixed)
+  - HIGH: UIOverlay `pointerEvents:none` 제거 (commit `0b96131`)
+  - WARN: CloudSeaSky 카메라 상대 방향 수정 `positionWorld.sub(cameraPosition)` (commit `0944c00`)
+  - WARN: NodeMaterial `dispose()` 누락 — GPU 리소스 누수 수정 (commit `0944c00`)
+  - WARN: colorAudit HSL saturation → raw delta chroma proxy (commit `0944c00`)
+- `/sunco:ship 5` 완료: PR kwmin122/my-blog#5 생성
+- 브랜치: `milestone/v1.0-launch` → main
+- 다음: PR 머지 후 `/sunco:plan 6`
+
+*Last updated: 2026-04-16 by /sunco:ship 5.*
+
+---
+
+### 2026-04-15 — Phase 5 Executed
+- `/sunco:execute 5` 완료: 3/3 plans PASS, lint gate PASS, `npx next build` 0
+- Wave 1 (병렬): 05-01 (CloudSeaSky TSL shader + ArchipelagoScene fog 제거, 4 commits) + 05-02 (tokens.ts baseTone/accent + colorAudit.ts, 2 commits)
+- Wave 2: 05-03 (UIGlassPanel + UIOverlay + useScrollOpacity + globals.css + wire-up, 6 commits)
+- 편차 1개: eslint.config.mjs에 `.claude/**` ignore 추가 (병렬 실행 worktree false-positive 수정)
+- REQ 충족: VIS-01 (TSL NodeMaterial CloudSeaSky), VIS-02 (backdrop-filter + --panel-opacity 0.4↔0.85), VIS-03 (baseTone+accent.* palette lock + assertLightColor dev guard)
+- 커밋 10개: d068106 → c72253d
+- 다음: `/sunco:verify 5`
+
+*Last updated: 2026-04-15 by /sunco:execute 5.*

@@ -1,15 +1,21 @@
 'use client'
 
+import { useEffect } from 'react'
 import FloatingIsland from './FloatingIsland'
 import SplineIslandProp from './SplineIslandProp'
 import { tokens } from '@/tokens/tokens'
+import CloudSeaSky from '@/shaders/CloudSeaSky'
+import { assertLightColor } from '@/lib/colorAudit'
 
 export default function ArchipelagoScene() {
+  useEffect(() => {
+    assertLightColor(tokens.scene.sunlight, 'directionalLight')
+    assertLightColor(tokens.scene.sky, 'fog-sky-removed')
+  }, [])
+
   return (
     <>
-      {/* Sky atmosphere */}
-      <fog attach="fog" args={[tokens.scene.sky, 20, 80]} />
-      <color attach="background" args={[tokens.scene.sky]} />
+      <CloudSeaSky />
 
       {/* Lighting */}
       <ambientLight intensity={0.6} />

@@ -27,7 +27,8 @@ const config = [
   ...(Array.isArray(nextConfig) ? nextConfig : [nextConfig]),
   {
     // tokens/tokens.ts is excluded — it IS the source of hex values
-    ignores: ['tokens/tokens.ts'],
+    // .claude/worktrees/** excluded — parallel agent isolation dirs, not project source
+    ignores: ['tokens/tokens.ts', '.claude/**'],
     plugins: {
       local: {
         rules: { 'no-hardcoded-hex': noHardcodedHexRule },
