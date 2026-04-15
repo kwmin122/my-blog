@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react'
 import * as THREE from 'three'
+import { tokens } from '@/tokens/tokens'
 
 interface FloatingIslandProps {
   id: string
@@ -28,7 +29,7 @@ export default function FloatingIsland({ id, position, scale, seed }: FloatingIs
 
   return (
     <mesh geometry={geo} position={position} scale={scale} name={id}>
-      <meshStandardMaterial color="#c4a882" roughness={0.9} metalness={0.05} />
+      <meshStandardMaterial color={tokens.scene.islandSand} roughness={0.9} metalness={0.05} />
     </mesh>
   )
 }
