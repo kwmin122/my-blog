@@ -117,3 +117,59 @@ None — all plans completed with lint PASS and pnpm build PASS.
 ## Ready for Verify
 
 **yes**
+
+---
+
+# Phase 7 — 7-Layer Swiss Cheese Verification
+
+**Verified:** 2026-04-16T09:30:00Z
+**Verifier model:** claude-sonnet-4-6 + claude-opus-4-6 (Layer 6 cross-model)
+
+## Layer Results
+
+| Layer | Name | Result | Notes |
+|-------|------|--------|-------|
+| L1 | Multi-agent review | PASS | All 3 plan summaries reviewed; deviations (children prop, hooks-order) semantic PASS |
+| L2 | Guardrails (lint/tsc/build) | PASS | tsc 0 errors, eslint 0 errors, pnpm build exits 0 — 14 pages prerendered |
+| L3 | BDD done_when criteria | PASS | All criteria checked — see table below |
+| L4 | Permission audit | PASS | No new env vars, no new external API calls, no new file system writes outside content/ |
+| L5 | Adversarial test | BLOCKER → FIXED | `getAltData` returned non-array visuals if JSON malformed; fixed with `Array.isArray` guard (commit a0b4957) |
+| L6 | Cross-model verification | BLOCKER → FIXED | Opus flagged `<a href>` in MinimalModeContent destroys WorldCanvas on nav; fixed with `<Link>` (commit a0b4957). Also flagged missing `role="region"` on WorldSRMirror (fixed same commit). |
+| L7 | Human eval | PASS | 4 blockers fixed: FAIL-1 (WorldMorphScroll useFrame), FAIL-2 (WorldCameraRig guard), FAIL-14 (Link), adversarial (Array.isArray) |
+
+## BDD done_when Checklist (Layer 3)
+
+| Plan | Criterion | Status |
+|------|-----------|--------|
+| 07-01 | `validatePostsMeta()` throws if < 5 posts | PASS — build-gated |
+| 07-01 | `validatePostsMeta()` throws if any category missing | PASS — build-gated |
+| 07-01 | Every .mdx has sibling .alt.json | PASS — 5 posts × 2 files confirmed |
+| 07-01 | ≥5 posts: 일기 × 2, 공부 × 1 (sample), 일지 × 1 | PASS — 5 posts across all 3 categories |
+| 07-02 | `worldStore.minimalMode` + `setMinimalMode` slice present | PASS — lib/worldStore.ts |
+| 07-02 | WorldSRMirror renders sr-only with aria-live | PASS — confirmed in component |
+| 07-02 | WorldSRMirror is canvas-sibling (not inside R3F Html) | PASS — mounted in app/layout.tsx |
+| 07-03 | MinimalModeToggle persists to localStorage `world:minimal-mode` | PASS — useEffect SSR-safe |
+| 07-03 | Lenis paused when minimalMode=true | PASS — SmoothScrollProvider subscription |
+| 07-03 | GSAP bail-out in WorldScrollCamera when minimalMode | PASS — bail-out in useGSAP |
+| 07-03 | GSAP bail-out in WorldMorphScroll when minimalMode | PASS — bail-out in useGSAP + useFrame |
+| 07-03 | WorldCameraRig bail-out when minimalMode | PASS — added in verify fix (commit a0b4957) |
+| 07-03 | MinimalModeContent uses <Link> not <a> | PASS — fixed in verify (commit a0b4957) |
+| 07-03 | Rive paused when minimalMode | PASS — RiveSignBoard checks minimalMode |
+
+## Verify Blocker Fixes (commit a0b4957)
+
+| Blocker | File | Fix |
+|---------|------|-----|
+| FAIL-1: useFrame runs in minimalMode | WorldMorphScroll.tsx | `if (minimalMode) return` at top of useFrame |
+| FAIL-2: WorldCameraRig no minimalMode guard | WorldCameraRig.tsx | Added minimalMode dep + bail-out in useGSAP |
+| FAIL-14: `<a href>` destroys WorldCanvas | MinimalModeContent.tsx | `<a>` → `<Link>` from next/link |
+| Adversarial: Array.map crash on non-array visuals | validate-posts.ts | `Array.isArray(parsed.visuals)` guard in getAltData |
+| A11Y: missing role=region on SR mirror | WorldSRMirror.tsx | Added `role="region"` + `<p role="heading" aria-level={2}>` |
+
+---
+
+## Overall Verdict
+
+**PASS — all 7 layers pass, all blockers fixed**
+
+Next step: `/sunco:ship 7`
