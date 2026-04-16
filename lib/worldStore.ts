@@ -36,6 +36,10 @@ interface WorldState {
   // --- Phase 6: custom cursor magnetic target ---
   cursorMagnetTarget: { x: number; y: number } | null
   setCursorMagnetTarget: (target: { x: number; y: number } | null) => void
+
+  // --- Phase 7: minimal mode (cognitive accessibility toggle) ---
+  minimalMode: boolean
+  setMinimalMode: (v: boolean) => void
 }
 
 export const useWorldStore = create<WorldState>((set) => ({
@@ -55,6 +59,9 @@ export const useWorldStore = create<WorldState>((set) => ({
 
   cursorMagnetTarget: null,
   setCursorMagnetTarget: (target) => set({ cursorMagnetTarget: target }),
+
+  minimalMode: false,
+  setMinimalMode: (v: boolean) => set({ minimalMode: v }),
 }))
 
 // Stable bound selectors for direct import (non-hook contexts)
@@ -69,3 +76,6 @@ export const setActiveWaypoint = (waypoint: WaypointData | null) =>
 
 export const setCursorMagnetTarget = (target: { x: number; y: number } | null) =>
   useWorldStore.getState().setCursorMagnetTarget(target)
+
+export const setMinimalMode = (v: boolean) =>
+  useWorldStore.getState().setMinimalMode(v)
