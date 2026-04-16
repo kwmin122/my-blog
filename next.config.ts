@@ -1,5 +1,13 @@
 import type { NextConfig } from 'next'
 import createMDX from '@next/mdx'
+import { validatePostsMeta } from './lib/validate-posts'
+
+// Run content validation during production builds only.
+// NEXT_PHASE is set to 'phase-development-server' during `next dev`.
+// During `next build` it is set to 'phase-production-build'.
+if (process.env.NEXT_PHASE !== 'phase-development-server') {
+  validatePostsMeta()
+}
 
 const nextConfig: NextConfig = {
   // Enable .md and .mdx pages
