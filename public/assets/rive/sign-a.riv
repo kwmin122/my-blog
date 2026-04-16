@@ -1,0 +1,5 @@
+# Rive placeholder — replace with actual .riv file from Rive editor
+# State machine: SignMachine
+# Inputs: hover (SMIBool), activate (SMITrigger)
+# States: idle, hovered, activated
+# Island: Home island (홈 섬)
