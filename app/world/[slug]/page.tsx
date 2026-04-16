@@ -40,13 +40,15 @@ export default async function WorldSlugPage({ params }: Props) {
   try {
     const mod = await import(`@/content/posts/${slug}.mdx`)
     const { metadata } = mod
-    const Post: React.ComponentType = mod.default
+    const Post = mod.default as React.ComponentType
     const postDate: string | undefined = metadata?.date as string | undefined
     return (
       <>
         <WorldPostPanel slug={slug} title={metadata.title} excerpt={metadata.excerpt} />
         <WorldPostWaypointSync slug={slug} />
-        <MinimalModeContent slug={slug} PostComponent={Post} postDate={postDate} />
+        <MinimalModeContent slug={slug} postDate={postDate}>
+          <Post />
+        </MinimalModeContent>
       </>
     )
   } catch {

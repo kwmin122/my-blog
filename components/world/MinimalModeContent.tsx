@@ -4,12 +4,12 @@ import { useWorldStore } from '@/lib/worldStore'
 
 export default function MinimalModeContent({
   slug,
-  PostComponent,
   postDate,
+  children,
 }: {
   slug: string
-  PostComponent: React.ComponentType
   postDate?: string
+  children: React.ReactNode
 }) {
   const minimalMode = useWorldStore((s) => s.minimalMode)
 
@@ -32,7 +32,7 @@ export default function MinimalModeContent({
             {postDate}
           </time>
         )}
-        <PostComponent />
+        {children}
         <a
           href={`/text/${slug}`}
           className="block mt-8 text-sm underline"
