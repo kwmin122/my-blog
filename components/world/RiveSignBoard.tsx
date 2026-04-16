@@ -4,7 +4,8 @@ import { useRef } from 'react'
 import { useRive, useStateMachineInput } from '@rive-app/react-canvas'
 import { useWorldStore } from '@/lib/worldStore'
 
-const STATE_MACHINE = 'SignMachine'
+// Names match the rive-runtime state_machine_triggers test asset used for sign-*.riv
+const STATE_MACHINE = 'State Machine 1'
 
 interface RiveSignBoardProps {
   src: string       // e.g. '/assets/rive/sign-a.riv'
@@ -28,15 +29,10 @@ export default function RiveSignBoard({
     autoplay: true,
   })
 
-  // SMIBool — set value to true/false on pointer enter/leave
-  const hoverInput    = useStateMachineInput(rive, STATE_MACHINE, 'hover')
-  // SMITrigger — fire on click
-  const activateTrigger = useStateMachineInput(rive, STATE_MACHINE, 'activate')
+  // SMITrigger — fires the one-shot trigger on click
+  const activateTrigger = useStateMachineInput(rive, STATE_MACHINE, 'Trigger 1')
 
   function handlePointerEnter() {
-    // eslint-disable-next-line react-hooks/immutability -- SMIBool.value is a mutable setter by Rive API design
-    if (hoverInput) hoverInput.value = true
-    // Compute element center for magnetic cursor pull
     if (wrapperRef.current) {
       const rect = wrapperRef.current.getBoundingClientRect()
       setCursorMagnetTarget({
@@ -47,8 +43,6 @@ export default function RiveSignBoard({
   }
 
   function handlePointerLeave() {
-    // eslint-disable-next-line react-hooks/immutability -- SMIBool.value is a mutable setter by Rive API design
-    if (hoverInput) hoverInput.value = false
     setCursorMagnetTarget(null)
   }
 
