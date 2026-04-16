@@ -8,6 +8,8 @@ import WorldMorphScroll from './WorldMorphScroll'
 import { tokens } from '@/tokens/tokens'
 import CloudSeaSky from '@/shaders/CloudSeaSky'
 import { assertLightColor } from '@/lib/colorAudit'
+import { Html } from '@react-three/drei'
+import RiveSignBoard from './RiveSignBoard'
 
 export default function ArchipelagoScene() {
   const homeMeshRef  = useRef<THREE.Mesh>(null)
@@ -77,6 +79,19 @@ export default function ArchipelagoScene() {
         scale={[0.7, 0.7, 0.7]}
         name="spline-arch"
       />
+
+      {/* Rive sign overlays — INT-01: hover → 'hover' SMIBool true, click → 'activate' SMITrigger.fire() */}
+      <Html occlude distanceFactor={10} position={[0, 3.5, 0]} center>
+        <RiveSignBoard src="/assets/rive/sign-a.riv" label="홈 섬 표지판" />
+      </Html>
+
+      <Html occlude distanceFactor={10} position={[-8, 2.5, 0]} center>
+        <RiveSignBoard src="/assets/rive/sign-b.riv" label="샘플 섬 표지판" />
+      </Html>
+
+      <Html occlude distanceFactor={10} position={[8, 1.5, 0]} center>
+        <RiveSignBoard src="/assets/rive/sign-c.riv" label="공부 섬 표지판" />
+      </Html>
 
       {/* VIS-04: Neutra-isolated objects — confined to home island only.
           userData.style = 'neutra' for scene auditing.
