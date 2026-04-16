@@ -8,13 +8,18 @@
 
 **Phase 6 — Motion Morphing & Micro-Interactions**
 **Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Not started
+**Status:** Verified — pending ship
 **Branch:** `milestone/v1.0-launch`
 
 ### 다음 액션
 ```
-/sunco:plan 6
+/sunco:ship 6
 ```
+
+### Verification result (2026-04-16)
+L1:WARN · L2:PASS · L3:PARTIAL · L4:PASS · L5:WARN · L6:WARN · L7:PASS
+All blocking issues fixed (8a450b8). 7 deferred items tracked in 06-VERIFICATION.md.
+Requirements: MOT-02 ✅ · VIS-04 ✅ · VIS-05 ✅ · INT-01 ✅
 
 ---
 
