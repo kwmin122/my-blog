@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { Component, type ReactNode, useEffect, useRef } from 'react'
 import { useRive, useStateMachineInput } from '@rive-app/react-canvas'
 import { useWorldStore } from '@/lib/worldStore'
 
@@ -14,13 +14,39 @@ interface RiveSignBoardProps {
   height?: number   // canvas height in px, default 80
 }
 
-export default function RiveSignBoard({
+class RiveErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: ReactNode }) {
+    super(props)
+    this.state = { hasError: false }
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true }
+  }
+  render() {
+    if (this.state.hasError) return null
+    return this.props.children
+  }
+}
+
+function RiveSignBoardInner({
   src,
   label,
   width = 120,
   height = 80,
 }: RiveSignBoardProps) {
+  // Phase 6 deferred: validate src starts with '/assets/rive/' (security WARN-1)
+  if (!src.startsWith('/assets/rive/')) {
+    if (process.env.NODE_ENV === 'development') {
+      throw new Error(`[RiveSignBoard] src must start with '/assets/rive/'. Got: '${src}'`)
+    }
+    return null
+  }
+
   const setCursorMagnetTarget = useWorldStore((s) => s.setCursorMagnetTarget)
+  const minimalMode = useWorldStore((s) => s.minimalMode)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const { rive, RiveComponent } = useRive({
@@ -28,6 +54,16 @@ export default function RiveSignBoard({
     stateMachines: STATE_MACHINE,
     autoplay: true,
   })
+
+  // Phase 6 deferred: pause/resume Rive on minimal mode toggle (D-04c)
+  useEffect(() => {
+    if (!rive) return
+    if (minimalMode) {
+      rive.pause()
+    } else {
+      rive.play()
+    }
+  }, [minimalMode, rive])
 
   // SMITrigger — fires the one-shot trigger on click
   const activateTrigger = useStateMachineInput(rive, STATE_MACHINE, 'Trigger 1')
@@ -70,5 +106,13 @@ export default function RiveSignBoard({
     >
       <RiveComponent style={{ width, height }} />
     </div>
+  )
+}
+
+export default function RiveSignBoard(props: RiveSignBoardProps) {
+  return (
+    <RiveErrorBoundary>
+      <RiveSignBoardInner {...props} />
+    </RiveErrorBoundary>
   )
 }
