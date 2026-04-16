@@ -6,20 +6,27 @@
 
 ## Current Phase
 
-**Phase 7 — Content, A11Y Polish & Cognitive Toggle**
+**Phase 8 — Asset Pipeline, Performance Gates & Launch**
 **Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Not started — pending discuss
+**Status:** Not started — pending plan
 **Branch:** `milestone/v1.0-launch`
 
 ### 다음 액션
 ```
-/sunco:discuss 7
+/sunco:plan 8
 ```
 
-### Carry-forward from Phase 6
-7 deferred hardening/a11y items are tracked in `.planning/phases/06-motion-morphing--micro-interactions/06-VERIFICATION.md`.
+### Carry-forward from Phase 7
+- `SplineIslandProp` Suspense boundary (deferred from Phase 6, re-deferred)
+- `WorldKeyboardNav` Escape trap (deferred from Phase 6, re-deferred)
 
 ---
+
+## Phase 7 — Content, A11Y Polish & Cognitive Toggle ✅ SHIPPED
+**Status:** Shipped (2026-04-16)
+**PR:** kwmin122/my-blog#6 (milestone/v1.0-launch → main, combined with Phase 6)
+**Verification:** Overall PASS — 5 blockers fixed (commit a0b4957); all 7 layers PASS
+**Requirements:** CONT-02, CONT-03, A11Y-01, A11Y-02
 
 ## Phase 6 — Motion Morphing & Micro-Interactions ✅ SHIPPED
 **Status:** Shipped (2026-04-16)
@@ -279,7 +286,7 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 
 *Last updated: 2026-04-16 by /sunco:verify 7.*
 
-- **phase**: 7
-- **status**: verified
-- **next_action**: Ship Phase 7: /sunco:ship 7
-- **last_updated**: 2026-04-16T09:30:00Z
+- **phase**: 8
+- **status**: not_started
+- **next_action**: Plan Phase 8: /sunco:plan 8
+- **last_updated**: 2026-04-16T09:45:00Z
