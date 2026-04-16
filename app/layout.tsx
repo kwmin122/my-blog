@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
 import SmoothScrollProviderWrapper from '@/components/providers/SmoothScrollProviderWrapper'
 import { UIOverlay } from '@/components/ui/UIGlassPanel'
+import WorldCursor from '@/components/world/WorldCursor'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({
         </a>
         <WorldCanvasLoader />
         <UIOverlay>
+          <WorldCursor />
           <SmoothScrollProviderWrapper>
             <main id="page-content">{children}</main>
           </SmoothScrollProviderWrapper>
