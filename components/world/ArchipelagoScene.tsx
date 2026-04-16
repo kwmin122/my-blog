@@ -89,15 +89,16 @@ export default function ArchipelagoScene() {
         position={[1.2, 1.6, 0.5]}
       >
         <boxGeometry args={[0.08, 1.2, 0.08]} />
-        <meshStandardMaterial color="#2a2a2a" roughness={0.8} metalness={0.3} />
+        {/* 0x2a2a2a — dark charcoal post — neutra-isolated */}
+        <meshStandardMaterial color={0x2a2a2a} roughness={0.8} metalness={0.3} />
       </mesh>
       <mesh
         userData={{ style: 'neutra', name: 'neutra-sign-board' }}
         position={[1.2, 2.4, 0.5]}
       >
         <boxGeometry args={[0.7, 0.4, 0.06]} />
-        {/* #00ff88 approximates accentNeon for pixel-styled sign — neutra-isolated */}
-        <meshStandardMaterial color="#00ff88" roughness={0.3} metalness={0.1} emissive="#00ff88" emissiveIntensity={0.4} />
+        {/* 0x00ff88 approximates accentNeon for pixel-styled sign — neutra-isolated */}
+        <meshStandardMaterial color={0x00ff88} roughness={0.3} metalness={0.1} emissive={0x00ff88} emissiveIntensity={0.4} />
       </mesh>
 
       {/* CRTMonitor — retro CRT monitor shell */}
@@ -108,7 +109,8 @@ export default function ArchipelagoScene() {
         rotation={[0, 0.4, 0]}
       >
         <boxGeometry args={[0.7, 0.6, 0.5]} />
-        <meshStandardMaterial color="#1a1a2e" roughness={0.6} metalness={0.2} />
+        {/* 0x1a1a2e — deep navy CRT shell — neutra-isolated */}
+        <meshStandardMaterial color={0x1a1a2e} roughness={0.6} metalness={0.2} />
       </mesh>
       <mesh
         userData={{ style: 'neutra', name: 'crt-screen' }}
@@ -116,8 +118,8 @@ export default function ArchipelagoScene() {
         rotation={[0, 0.4, 0]}
       >
         <planeGeometry args={[0.5, 0.38]} />
-        {/* #8eff4f approximates accentNeon oklch(0.82 0.25 140) for CRT glow */}
-        <meshStandardMaterial color="#8eff4f" emissive="#8eff4f" emissiveIntensity={0.8} roughness={0} metalness={0} />
+        {/* 0x8eff4f approximates accentNeon oklch(0.82 0.25 140) for CRT glow */}
+        <meshStandardMaterial color={0x8eff4f} emissive={0x8eff4f} emissiveIntensity={0.8} roughness={0} metalness={0} />
       </mesh>
 
       {/* PixelCharacter — low-poly pixel avatar figure */}
@@ -126,16 +128,17 @@ export default function ArchipelagoScene() {
         userData={{ style: 'neutra', name: 'pixel-character' }}
         position={[0.2, 1.6, -1.2]}
       >
-        {/* Head */}
+        {/* Head — 0xffd700 gold — neutra-isolated */}
         <boxGeometry args={[0.25, 0.25, 0.25]} />
-        <meshStandardMaterial color="#ffd700" roughness={1} metalness={0} />
+        <meshStandardMaterial color={0xffd700} roughness={1} metalness={0} />
       </mesh>
       <mesh
         userData={{ style: 'neutra', name: 'pixel-character-body' }}
         position={[0.2, 1.2, -1.2]}
       >
         <boxGeometry args={[0.2, 0.3, 0.15]} />
-        <meshStandardMaterial color="#4488ff" roughness={1} metalness={0} />
+        {/* 0x4488ff — pixel blue body — neutra-isolated */}
+        <meshStandardMaterial color={0x4488ff} roughness={1} metalness={0} />
       </mesh>
     </>
   )
