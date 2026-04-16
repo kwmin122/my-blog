@@ -36,6 +36,8 @@ export default function FloatingIsland({ id, position, scale, seed, morphRef }: 
     }
     g.morphAttributes.position = [new THREE.Float32BufferAttribute(morphArr, 3)]
     g.morphTargetsRelative = false
+    // Note: computeMorphNormals() was removed in Three.js r150+.
+    // Morph normals are recomputed automatically by the WebGPURenderer on each frame.
 
     return g
   }, [seed])

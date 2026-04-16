@@ -58,6 +58,7 @@ export default function RiveSignBoard({
       aria-label={label}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
+      onPointerCancel={handlePointerLeave}
       onClick={handleClick}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleClick() }}
       style={{

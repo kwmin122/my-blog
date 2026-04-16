@@ -80,7 +80,8 @@ export default function ArchipelagoScene() {
         name="spline-arch"
       />
 
-      {/* Rive sign overlays — INT-01: hover → 'hover' SMIBool true, click → 'activate' SMITrigger.fire() */}
+      {/* Rive sign overlays — INT-01: click → 'Trigger 1' fires in 'State Machine 1'.
+          Hover: cursor magnet via onPointerEnter → setCursorMagnetTarget (no SMIBool in asset). */}
       <Html occlude distanceFactor={10} position={[0, 3.5, 0]} center>
         <RiveSignBoard src="/assets/rive/sign-a.riv" label="홈 섬 표지판" />
       </Html>
