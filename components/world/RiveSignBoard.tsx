@@ -34,6 +34,7 @@ export default function RiveSignBoard({
   const activateTrigger = useStateMachineInput(rive, STATE_MACHINE, 'activate')
 
   function handlePointerEnter() {
+    // eslint-disable-next-line react-hooks/immutability -- SMIBool.value is a mutable setter by Rive API design
     if (hoverInput) hoverInput.value = true
     // Compute element center for magnetic cursor pull
     if (wrapperRef.current) {
@@ -46,6 +47,7 @@ export default function RiveSignBoard({
   }
 
   function handlePointerLeave() {
+    // eslint-disable-next-line react-hooks/immutability -- SMIBool.value is a mutable setter by Rive API design
     if (hoverInput) hoverInput.value = false
     setCursorMagnetTarget(null)
   }
