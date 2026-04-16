@@ -38,19 +38,18 @@ function RiveSignBoardInner({
   height = 80,
 }: RiveSignBoardProps) {
   // Phase 6 deferred: validate src starts with '/assets/rive/' (security WARN-1)
-  if (!src.startsWith('/assets/rive/')) {
-    if (process.env.NODE_ENV === 'development') {
-      throw new Error(`[RiveSignBoard] src must start with '/assets/rive/'. Got: '${src}'`)
-    }
-    return null
-  }
+  // Validation result computed before hooks for use in conditional, but all hooks
+  // are called unconditionally below (rules-of-hooks compliance).
+  const isSrcValid = src.startsWith('/assets/rive/')
 
+  // Hooks must be called unconditionally (React rules-of-hooks)
   const setCursorMagnetTarget = useWorldStore((s) => s.setCursorMagnetTarget)
   const minimalMode = useWorldStore((s) => s.minimalMode)
   const wrapperRef = useRef<HTMLDivElement>(null)
 
   const { rive, RiveComponent } = useRive({
-    src,
+    // Pass validated src; useRive will no-op if src is empty string
+    src: isSrcValid ? src : '',
     stateMachines: STATE_MACHINE,
     autoplay: true,
   })
@@ -67,6 +66,14 @@ function RiveSignBoardInner({
 
   // SMITrigger — fires the one-shot trigger on click
   const activateTrigger = useStateMachineInput(rive, STATE_MACHINE, 'Trigger 1')
+
+  // After all hooks: guard invalid src
+  if (!isSrcValid) {
+    if (process.env.NODE_ENV === 'development') {
+      throw new Error(`[RiveSignBoard] src must start with '/assets/rive/'. Got: '${src}'`)
+    }
+    return null
+  }
 
   function handlePointerEnter() {
     if (wrapperRef.current) {
