@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { getPostSlugs } from '@/lib/posts'
 import WorldPostPanel from '@/components/world/WorldPostPanel'
 import WorldPostWaypointSync from '@/components/world/WorldPostWaypointSync'
+import MinimalModeContent from '@/components/world/MinimalModeContent'
 
 export async function generateStaticParams() {
   const slugs = getPostSlugs()
@@ -37,9 +38,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function WorldSlugPage({ params }: Props) {
   const { slug } = await params
   try {
-    const { metadata } = await import(`@/content/posts/${slug}.mdx`)
+    const mod = await import(`@/content/posts/${slug}.mdx`)
+    const { metadata } = mod
+    const Post: React.ComponentType = mod.default
+    const postDate: string | undefined = metadata?.date as string | undefined
     return (
-      <><WorldPostPanel slug={slug} title={metadata.title} excerpt={metadata.excerpt} /><WorldPostWaypointSync slug={slug} /></>
+      <>
+        <WorldPostPanel slug={slug} title={metadata.title} excerpt={metadata.excerpt} />
+        <WorldPostWaypointSync slug={slug} />
+        <MinimalModeContent slug={slug} PostComponent={Post} postDate={postDate} />
+      </>
     )
   } catch {
     notFound()
