@@ -18,6 +18,10 @@ export default function ArchipelagoScene() {
   useEffect(() => {
     assertLightColor(tokens.scene.sunlight, 'directionalLight')
     assertLightColor(tokens.scene.sky, 'fog-sky-removed')
+    // Initialize directionalLight color from token (avoid JSX reconciler override of WorldMorphScroll.setRGB)
+    if (dirLightRef.current) {
+      dirLightRef.current.color.set(tokens.scene.sunlight)
+    }
   }, [])
 
   return (
@@ -34,7 +38,6 @@ export default function ArchipelagoScene() {
         position={[10, 20, 10]}
         intensity={1.2}
         castShadow={false}
-        color={tokens.scene.sunlight}
       />
 
       {/* Cloud sea plane */}
