@@ -5,11 +5,12 @@ import { gsap } from '@/lib/gsap'
 import { useWorldStore } from '@/lib/worldStore'
 
 export default function WorldCursor() {
-  const cursorRef      = useRef<HTMLDivElement>(null)
-  const rawPos         = useRef({ x: -9999, y: -9999 })
-  const smoothPos      = useRef({ x: -9999, y: -9999 })
-  const magnetTarget   = useWorldStore((s) => s.cursorMagnetTarget)
-  const magnetRef      = useRef<{ x: number; y: number } | null>(null)
+  const cursorRef    = useRef<HTMLDivElement>(null)
+  const rawPos       = useRef({ x: -9999, y: -9999 })
+  const smoothPos    = useRef({ x: -9999, y: -9999 })
+  const magnetTarget = useWorldStore((s) => s.cursorMagnetTarget)
+  const magnetRef    = useRef<{ x: number; y: number } | null>(null)
+  const minimalMode  = useWorldStore((s) => s.minimalMode)
 
   // Keep a ref in sync so the GSAP ticker callback (closure) always reads the latest value
   // without needing to re-register the ticker on every store update
@@ -19,10 +20,9 @@ export default function WorldCursor() {
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (mq.matches) {
-      // Reduced motion: do not hide OS cursor; do not mount custom cursor visually
-      return
-    }
+
+    // Guard: skip custom cursor if reduced motion OR minimal mode active
+    if (mq.matches || minimalMode) return
 
     document.body.classList.add('cursor-none')
 
@@ -45,12 +45,30 @@ export default function WorldCursor() {
     }
     gsap.ticker.add(tickerCallback)
 
+    // Phase 6 deferred: live reactivity to OS prefers-reduced-motion change
+    const handleMqChange = () => {
+      // Re-run the effect by triggering cleanup + re-setup via React
+      // The cleanup returned below handles teardown; the dependency array
+      // re-runs this effect on mq change only if we force a re-render.
+      // Pattern: mq change → dispatch a synthetic event to force teardown
+      // Simplest correct approach: call cleanup directly and restore OS cursor.
+      // Since React won't re-run the effect on mq.change (no dep change),
+      // we must handle it within the event listener:
+      if (mq.matches) {
+        gsap.ticker.remove(tickerCallback)
+        window.removeEventListener('mousemove', onMove)
+        document.body.classList.remove('cursor-none')
+      }
+    }
+    mq.addEventListener('change', handleMqChange)
+
     return () => {
       gsap.ticker.remove(tickerCallback)
       window.removeEventListener('mousemove', onMove)
+      mq.removeEventListener('change', handleMqChange)
       document.body.classList.remove('cursor-none')
     }
-  }, [])
+  }, [minimalMode])
 
   return (
     <div
