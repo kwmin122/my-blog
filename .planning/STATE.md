@@ -6,22 +6,26 @@
 
 ## Current Phase
 
-**Phase 6 — Motion Morphing & Micro-Interactions**
+**Phase 7 — Content, A11Y Polish & Cognitive Toggle**
 **Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Verified — pending ship
+**Status:** Not started — pending discuss
 **Branch:** `milestone/v1.0-launch`
 
 ### 다음 액션
 ```
-/sunco:ship 6
+/sunco:discuss 7
 ```
 
-### Verification result (2026-04-16)
-L1:WARN · L2:PASS · L3:PARTIAL · L4:PASS · L5:WARN · L6:WARN · L7:PASS
-All blocking issues fixed (8a450b8). 7 deferred items tracked in 06-VERIFICATION.md.
-Requirements: MOT-02 ✅ · VIS-04 ✅ · VIS-05 ✅ · INT-01 ✅
+### Carry-forward from Phase 6
+7 deferred hardening/a11y items are tracked in `.planning/phases/06-motion-morphing--micro-interactions/06-VERIFICATION.md`.
 
 ---
+
+## Phase 6 — Motion Morphing & Micro-Interactions ✅ SHIPPED
+**Status:** Shipped (2026-04-16)
+**PR:** kwmin122/my-blog#6 (milestone/v1.0-launch → main)
+**Verification:** Overall PASS with WARN/PARTIAL accepted at L7; all blockers fixed (8a450b8), 7 deferred items tracked for Phase 7
+**Requirements:** MOT-02, VIS-04, VIS-05, INT-01
 
 ## Phase 5 — Visual Signature: Shaders & Glass ✅ SHIPPED
 **Status:** Shipped (2026-04-16)
