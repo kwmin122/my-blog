@@ -17,11 +17,6 @@ const BASE_HEX = 0xfff8e8
 const BASE_COLOR = new THREE.Color(BASE_HEX)
 const NEON_COLOR = new THREE.Color(NEON_HEX)
 
-export interface WorldMorphScrollHandles {
-  meshRef: React.RefObject<THREE.Mesh | null>
-  lightRef: React.RefObject<THREE.DirectionalLight | null>
-}
-
 // Proxy ref: GSAP tweens these plain numeric values; useFrame applies them to Three.js objects
 function makeProxy() {
   return {
@@ -40,9 +35,10 @@ interface WorldMorphScrollProps {
 export default function WorldMorphScroll({ meshRef, lightRef }: WorldMorphScrollProps) {
   const proxy = useRef(makeProxy())
   const isHomePage = useWorldStore((s) => s.isHomePage)
+  const minimalMode = useWorldStore((s) => s.minimalMode)
 
   useGSAP(() => {
-    if (!isHomePage) return
+    if (!isHomePage || minimalMode) return
 
     const mm = gsap.matchMedia()
     mm.add({ reduceMotion: '(prefers-reduced-motion: reduce)' }, (ctx) => {
@@ -80,7 +76,7 @@ export default function WorldMorphScroll({ meshRef, lightRef }: WorldMorphScroll
     })
 
     return () => { mm.revert() }
-  }, { dependencies: [isHomePage], revertOnUpdate: true })
+  }, { dependencies: [isHomePage, minimalMode], revertOnUpdate: true })
 
   useFrame(() => {
     if (meshRef.current?.morphTargetInfluences) {

@@ -9,9 +9,10 @@ import { SCROLL_WAYPOINTS, WAYPOINTS } from '@/lib/waypoints'
 export default function WorldScrollCamera() {
   const camera = useThree((s) => s.camera)
   const isHomePage = useWorldStore((s) => s.isHomePage)
+  const minimalMode = useWorldStore((s) => s.minimalMode)
 
   useGSAP(() => {
-    if (!isHomePage) return
+    if (!isHomePage || minimalMode) return
 
     const mm = gsap.matchMedia()
     mm.add({ reduceMotion: '(prefers-reduced-motion: reduce)' }, (ctx) => {
@@ -67,7 +68,7 @@ export default function WorldScrollCamera() {
     })
 
     return () => { mm.revert() }
-  }, { dependencies: [isHomePage], revertOnUpdate: true })
+  }, { dependencies: [isHomePage, minimalMode], revertOnUpdate: true })
   // revertOnUpdate: true — ensures gsap.matchMedia() context is reverted on each
   // dependency change, not just on unmount
 
