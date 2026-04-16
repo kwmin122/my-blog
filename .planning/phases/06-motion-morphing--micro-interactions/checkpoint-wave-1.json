@@ -1,0 +1,54 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "06",
+  "phase_name": "motion-morphing--micro-interactions",
+  "phase_slug": "06-motion-morphing--micro-interactions",
+  "wave_completed": 1,
+  "timestamp": "2026-04-16T05:49:46Z",
+  "plans_completed": [
+    {
+      "id": "06-01",
+      "title": "Morph scroll timeline + neutra objects",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/06-motion-morphing--micro-interactions/06-01-SUMMARY.md",
+      "last_commit": "b291b49",
+      "files_written": [
+        "components/world/FloatingIsland.tsx",
+        "components/world/WorldMorphScroll.tsx",
+        "components/world/ArchipelagoScene.tsx"
+      ]
+    },
+    {
+      "id": "06-02",
+      "title": "Custom cursor with magnet and reduced-motion gate",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/06-motion-morphing--micro-interactions/06-02-SUMMARY.md",
+      "last_commit": "ef20f5a",
+      "files_written": [
+        "lib/worldStore.ts",
+        "components/world/WorldCursor.tsx",
+        "app/layout.tsx",
+        "app/globals.css"
+      ]
+    }
+  ],
+  "plans_pending": [
+    {
+      "id": "06-03",
+      "title": "Rive state machine sign overlays",
+      "wave": 2,
+      "status": "pending"
+    }
+  ],
+  "blast_radius": {
+    "risk": "MEDIUM",
+    "files_in_scope": 12,
+    "files_transitively_affected": 7
+  },
+  "lint_gate_overrides": [],
+  "branch": "milestone/v1.0-launch",
+  "interrupted": false,
+  "next_wave": 2
+}

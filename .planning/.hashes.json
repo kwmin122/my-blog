@@ -2,7 +2,7 @@
   ".planning/PROJECT.md": "1c943fe271452b04619dfa1df1c651be05d262cd8deec142586b6deca23c3197",
   ".planning/REQUIREMENTS.md": "53dde752861f772551b0c38f33642123065f769435d0611e92f7c81b1a8cbfc8",
   ".planning/ROADMAP.md": "b49581181d076e1cca20414bb43d0c7da97e509b4f5e031a2910a3f6b6227720",
-  ".planning/STATE.md": "6187eb88c9afc812fda89cc9747674181f623e84814844a9b601c71f2012ca1b",
+  ".planning/STATE.md": "4c45741ca76864da891859c3fe7ec1937a43069cf58c9b31fa77c33d0563f04f",
   ".planning/phases/01-foundation-and-verification/01-01-PLAN.md": "a2e640019c40f6f10096854beb5c9e20ab8de89f4ab01b70ab95e8b5382cb555",
   ".planning/phases/01-foundation-and-verification/01-01-SUMMARY.md": "4d6d23e9eda561aee8e21c155901c31237722729268289c17b16ccaa149acc25",
   ".planning/phases/01-foundation-and-verification/01-02-PLAN.md": "74788c662b93cde0f52d6460b595df0835c425d3ef1a95e0e1e0bed9fce241e9",
@@ -47,5 +47,15 @@
   ".planning/phases/05-visual-signature-shaders-and-glass/05-RESEARCH.md": "275df6a1c2e1492d095b321f7acddcf20a0fda2c0cf75d8dee66b563c626c2d8",
   ".planning/phases/05-visual-signature-shaders-and-glass/05-VERIFICATION.md": "1f046e4c9f45e2b7602fa804ade95c84074dbd15afd6292b922805862d9a3c67",
   ".planning/phases/05-visual-signature-shaders-and-glass/checkpoint-wave-1.json": "f5971e588dfffaa4b2ac3d0f333fdff149f88fb8cc3e012961f501955dc66cdf",
-  ".planning/phases/05-visual-signature-shaders-and-glass/checkpoint-wave-2.json": "c6dbcd2d4fa671ed8f2e53470925ed7689dbe491ac7e0c356410665120ba37e8"
+  ".planning/phases/05-visual-signature-shaders-and-glass/checkpoint-wave-2.json": "c6dbcd2d4fa671ed8f2e53470925ed7689dbe491ac7e0c356410665120ba37e8",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-01-PLAN.md": "9f038027908ffe2653d845cf665b467bcdcd1306e932e2f989b2aa0f65a2ee2e",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-01-SUMMARY.md": "bd82566305ff6f67a79065ee69ec4ba445af6a47e6ec8c2238f1565436a18c0e",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-02-PLAN.md": "3309a157a553585856d1e1bca43a280b18f3c176c958b90b726852b377599e1a",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-02-SUMMARY.md": "9006af1db540b2b503cf671f82d961748fcfe8bfaffc1bbb1876f25a1f85681b",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-03-PLAN.md": "0a8341e94befe70518636fafc8f908fef69d4524d3dcfcd91574f8709a6e3456",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-03-SUMMARY.md": "3dcd9eff4a977725ebcc133ddecea511f9a22d8086b448ca360ebaf97d17c452",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-RESEARCH.md": "e1538d8fce6b8b34718227b30c274ba40033261cef6da2936dd8cf4ee3eac341",
+  ".planning/phases/06-motion-morphing--micro-interactions/06-VERIFICATION.md": "36e8951888fdb5ba89e0c65bb80c30f0f4c3a298084cef20b092b6bdc91fa4e8",
+  ".planning/phases/06-motion-morphing--micro-interactions/checkpoint-wave-1.json": "c55ebe5df22bd5b11bcb50533c16122892a3a9e7401685490376d2d6002644db",
+  ".planning/phases/06-motion-morphing--micro-interactions/checkpoint-wave-2.json": "af89edea5cb291e63435d4edc72c87e0c89a2278bace90c21bee272d9c1c90bd"
 }
