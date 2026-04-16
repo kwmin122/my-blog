@@ -4,6 +4,7 @@ import SmoothScrollProviderWrapper from '@/components/providers/SmoothScrollProv
 import { UIOverlay } from '@/components/ui/UIGlassPanel'
 import WorldCursor from '@/components/world/WorldCursor'
 import WorldSRMirror, { type PostSRData } from '@/components/world/WorldSRMirror'
+import MinimalModeToggle from '@/components/ui/MinimalModeToggle'
 import { getPostSlugs } from '@/lib/posts'
 import { getAltData } from '@/lib/validate-posts'
 import './globals.css'
@@ -55,6 +56,7 @@ export default async function RootLayout({
         <WorldCanvasLoader />
         <UIOverlay>
           <WorldSRMirror posts={postSRData} />
+          <MinimalModeToggle />
           <WorldCursor />
           <SmoothScrollProviderWrapper>
             <main id="page-content">{children}</main>
