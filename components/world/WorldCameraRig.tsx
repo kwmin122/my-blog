@@ -8,9 +8,10 @@ import { useWorldStore } from '@/lib/worldStore'
 export default function WorldCameraRig() {
   const camera = useThree((s) => s.camera)
   const activeWaypoint = useWorldStore((s) => s.activeWaypoint)
+  const minimalMode = useWorldStore((s) => s.minimalMode)
 
   useGSAP(() => {
-    if (!activeWaypoint) return
+    if (!activeWaypoint || minimalMode) return
 
     const { position, target } = activeWaypoint
 
@@ -32,7 +33,7 @@ export default function WorldCameraRig() {
     })
 
     return () => { mm.revert() }
-  }, { dependencies: [activeWaypoint], revertOnUpdate: true })
+  }, { dependencies: [activeWaypoint, minimalMode], revertOnUpdate: true })
   // revertOnUpdate: true — ensures gsap.matchMedia() context is reverted on each
   // dependency change (not just unmount), preventing context accumulation
 

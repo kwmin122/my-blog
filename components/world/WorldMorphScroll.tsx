@@ -79,6 +79,7 @@ export default function WorldMorphScroll({ meshRef, lightRef }: WorldMorphScroll
   }, { dependencies: [isHomePage, minimalMode], revertOnUpdate: true })
 
   useFrame(() => {
+    if (minimalMode) return
     if (meshRef.current?.morphTargetInfluences) {
       meshRef.current.morphTargetInfluences[0] = proxy.current.morph
     }

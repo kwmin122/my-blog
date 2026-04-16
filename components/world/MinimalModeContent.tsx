@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { useWorldStore } from '@/lib/worldStore'
 
 export default function MinimalModeContent({
@@ -33,13 +34,13 @@ export default function MinimalModeContent({
           </time>
         )}
         {children}
-        <a
+        <Link
           href={`/text/${slug}`}
           className="block mt-8 text-sm underline"
           style={{ color: 'var(--color-accent-neon)' }}
         >
           정본 페이지에서 읽기 →
-        </a>
+        </Link>
       </article>
     </div>
   )

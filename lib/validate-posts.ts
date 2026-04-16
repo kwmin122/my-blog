@@ -53,5 +53,5 @@ export function getAltData(slug: string): AltData {
   if (!existsSync(altPath)) return { visuals: [] }
   const raw = readFileSync(altPath, 'utf-8')
   const parsed = JSON.parse(raw) as Partial<AltData>
-  return { visuals: parsed.visuals ?? [] }
+  return { visuals: Array.isArray(parsed.visuals) ? parsed.visuals : [] }
 }
