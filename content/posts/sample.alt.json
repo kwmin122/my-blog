@@ -1,1 +1,5 @@
-{ "slug": "sample", "visuals": [] }
+{
+  "visuals": [
+    { "id": "sample-island", "alt": "구름 위에 떠 있는 작은 섬과 뾰족한 나무 한 그루" }
+  ]
+}
