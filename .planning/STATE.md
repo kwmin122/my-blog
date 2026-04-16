@@ -251,3 +251,7 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:verify 5`
 
 *Last updated: 2026-04-15 by /sunco:execute 5.*
+- **phase**: 6
+- **status**: planned
+- **next_action**: Execute Phase 6: /sunco:execute 6
+- **last_updated**: 2026-04-16T05:34:02.367Z
