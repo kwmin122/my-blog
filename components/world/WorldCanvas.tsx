@@ -11,10 +11,13 @@ import WorldScene from './WorldScene'
 // Register three/webgpu classes with R3F's JSX catalog
 extend(THREE as any)
 
-type RendererMode = 'webgpu' | 'webgl2' | 'poster'
+type RendererMode = 'webgpu' | 'webgl2' | 'poster' | 'mobile-pending'
 
 function detectMode(): RendererMode {
   if (typeof navigator === 'undefined') return 'poster'
+  // Mobile gate: coarse pointer + no fine hover = touch device
+  // Shows poster + 탐험하기 button; no WebGPU/WebGL2 context created until tap.
+  if (window.matchMedia('(hover: none) and (pointer: coarse)').matches) return 'mobile-pending'
   // Check WebGL2 availability first — required for both WebGL2 and WebGPU paths
   const testCanvas = document.createElement('canvas')
   const gl2 = testCanvas.getContext('webgl2')
@@ -56,6 +59,52 @@ function StaticPosterFallback() {
   )
 }
 
+function MobilePendingFallback({ onActivate }: { onActivate: () => void }) {
+  return (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 0, background: 'var(--color-base)' }}>
+      <Image
+        src="/poster.jpg"
+        alt="3D World — tap 탐험하기 to explore"
+        fill
+        style={{ objectFit: 'cover' }}
+        priority
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 48,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 12,
+        }}
+      >
+        <button
+          onClick={onActivate}
+          style={{
+            padding: '12px 32px',
+            fontSize: '1.1rem',
+            fontWeight: 700,
+            color: 'var(--color-base)',
+            background: 'var(--color-accent-neon)',
+            border: 'none',
+            borderRadius: 9999,
+            cursor: 'pointer',
+          }}
+        >
+          탐험하기
+        </button>
+        <Link href="/text" style={{ color: 'white', textDecoration: 'underline', fontSize: '0.9rem' }}>
+          텍스트로 읽기 →
+        </Link>
+      </div>
+    </div>
+  )
+}
+
 export default function WorldCanvas() {
   const [mode, setMode] = useState<RendererMode | null>(null)
 
@@ -89,9 +138,24 @@ export default function WorldCanvas() {
     [mode],
   )
 
+  // Mobile tap handler: re-detect WebGPU/WebGL2 capability without the mobile gate.
+  // No GPU context is created until this is called.
+  const activateMobile = useCallback(() => {
+    // Re-detect without the mobile gate: determine webgpu vs webgl2 capability
+    const testCanvas = document.createElement('canvas')
+    const gl2 = testCanvas.getContext('webgl2')
+    if (!gl2) {
+      setMode('poster')
+      return
+    }
+    gl2.getExtension('WEBGL_lose_context')?.loseContext()
+    setMode(navigator.gpu ? 'webgpu' : 'webgl2')
+  }, [])
+
   // null during SSR hydration window — renders nothing until client detects mode
   if (mode === null) return null
   if (mode === 'poster') return <StaticPosterFallback />
+  if (mode === 'mobile-pending') return <MobilePendingFallback onActivate={activateMobile} />
 
   return (
     <div
