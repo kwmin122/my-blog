@@ -12,7 +12,7 @@ interface SplineIslandPropProps {
 }
 
 export default function SplineIslandProp({ path, position, scale = [1, 1, 1], name }: SplineIslandPropProps) {
-  const { scene } = useGLTF(path)
+  const { scene } = useGLTF(path, '/draco/')
   // Clone so multiple instances do not share the same scene graph
   const clone = useMemo(() => scene.clone(true), [scene])
 
@@ -26,6 +26,6 @@ export default function SplineIslandProp({ path, position, scale = [1, 1, 1], na
 }
 
 // Preload at module evaluation time — avoids waterfall on first render
-useGLTF.preload('/assets/raw/island-cottage.glb')
-useGLTF.preload('/assets/raw/island-tree.glb')
-useGLTF.preload('/assets/raw/island-arch.glb')
+useGLTF.preload('/assets/out/island-cottage.glb')
+useGLTF.preload('/assets/out/island-tree.glb')
+useGLTF.preload('/assets/out/island-arch.glb')
