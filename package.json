@@ -28,6 +28,10 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
     "@gltf-transform/cli": "^4.3.0",
+    "@gltf-transform/core": "^4.3.0",
+    "@gltf-transform/extensions": "^4.3.0",
+    "@gltf-transform/functions": "^4.3.0",
+    "draco3dgltf": "^1.5.7",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/mdx": "2.0.13",
     "@types/node": "^20.0.0",
