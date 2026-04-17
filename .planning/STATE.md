@@ -287,6 +287,6 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 *Last updated: 2026-04-16 by /sunco:verify 7.*
 
 - **phase**: 8
-- **status**: not_started
-- **next_action**: Plan Phase 8: /sunco:plan 8
-- **last_updated**: 2026-04-16T09:45:00Z
+- **status**: planned
+- **next_action**: Execute Phase 8: /sunco:execute 8
+- **last_updated**: 2026-04-17T05:14:31.219Z
