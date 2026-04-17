@@ -2,6 +2,11 @@ import type { Metadata } from 'next'
 import WorldCanvasLoader from '@/components/world/WorldCanvasLoader'
 import SmoothScrollProviderWrapper from '@/components/providers/SmoothScrollProviderWrapper'
 import { UIOverlay } from '@/components/ui/UIGlassPanel'
+import WorldCursor from '@/components/world/WorldCursor'
+import WorldSRMirror, { type PostSRData } from '@/components/world/WorldSRMirror'
+import MinimalModeToggle from '@/components/ui/MinimalModeToggle'
+import { getPostSlugs } from '@/lib/posts'
+import { getAltData } from '@/lib/validate-posts'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,11 +19,30 @@ export const metadata: Metadata = {
   description: 'Personal blog — single continuous 3D world',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  // Gather all post metadata server-side for SR mirror
+  const slugs = getPostSlugs()
+  const postSRData: PostSRData[] = await Promise.all(
+    slugs.map(async (slug) => {
+      try {
+        const { metadata } = await import(`@/content/posts/${slug}.mdx`)
+        const altData = getAltData(slug)
+        return {
+          slug,
+          title: (metadata?.title as string) ?? slug,
+          excerpt: (metadata?.excerpt as string) ?? '',
+          visuals: altData.visuals,
+        }
+      } catch {
+        return { slug, title: slug, excerpt: '', visuals: [] }
+      }
+    })
+  )
+
   return (
     <html lang="ko">
       <body>
@@ -31,6 +55,9 @@ export default function RootLayout({
         </a>
         <WorldCanvasLoader />
         <UIOverlay>
+          <WorldSRMirror posts={postSRData} />
+          <MinimalModeToggle />
+          <WorldCursor />
           <SmoothScrollProviderWrapper>
             <main id="page-content">{children}</main>
           </SmoothScrollProviderWrapper>

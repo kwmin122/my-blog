@@ -6,17 +6,33 @@
 
 ## Current Phase
 
-**Phase 6 — Motion Morphing & Micro-Interactions**
-**Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Not started
-**Branch:** `milestone/v1.0-launch`
+**Milestone v1.0 — COMPLETE**
+All 8 phases shipped. PR kwmin122/my-blog#6 open (milestone/v1.0-launch → main).
 
 ### 다음 액션
-```
-/sunco:plan 6
-```
+Merge PR #6 → deploy to Vercel production.
 
 ---
+
+## Phase 8 — Asset Pipeline, Performance Gates & Launch ✅ SHIPPED
+**Status:** Shipped (2026-04-17)
+**PR:** kwmin122/my-blog#6 (milestone/v1.0-launch → main, combined with Phase 6+7)
+**Verification:** Overall PASS — 4 fixes applied during verify; all 7 layers PASS/WARN
+**Requirements:** INFRA-01, INFRA-02, INFRA-03, PERF-01, PERF-02, PERF-03, PERF-04
+
+---
+
+## Phase 7 — Content, A11Y Polish & Cognitive Toggle ✅ SHIPPED
+**Status:** Shipped (2026-04-16)
+**PR:** kwmin122/my-blog#6 (milestone/v1.0-launch → main, combined with Phase 6)
+**Verification:** Overall PASS — 5 blockers fixed (commit a0b4957); all 7 layers PASS
+**Requirements:** CONT-02, CONT-03, A11Y-01, A11Y-02
+
+## Phase 6 — Motion Morphing & Micro-Interactions ✅ SHIPPED
+**Status:** Shipped (2026-04-16)
+**PR:** kwmin122/my-blog#6 (milestone/v1.0-launch → main)
+**Verification:** Overall PASS with WARN/PARTIAL accepted at L7; all blockers fixed (8a450b8), 7 deferred items tracked for Phase 7
+**Requirements:** MOT-02, VIS-04, VIS-05, INT-01
 
 ## Phase 5 — Visual Signature: Shaders & Glass ✅ SHIPPED
 **Status:** Shipped (2026-04-16)
@@ -251,3 +267,27 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 - 다음: `/sunco:verify 5`
 
 *Last updated: 2026-04-15 by /sunco:execute 5.*
+---
+
+### 2026-04-16 — Phase 7 Executed & Verified
+- `/sunco:execute 7` 완료: 3/3 plans PASS, lint gate PASS, pnpm build 0 — 14 pages prerendered
+- Wave 1 (병렬): 07-01 (content schema + 5 posts + alt JSON), 07-02 (WorldSRMirror + minimalMode slice)
+- Wave 2: 07-03 (MinimalModeToggle + Lenis/GSAP/Rive pause + Phase 6 deferred fixes)
+- 편차 2개: children prop (Next.js serialization), hooks-before-return (rules-of-hooks)
+- `/sunco:verify 7` 완료: 7/7 layers PASS, 5 blockers fixed (commit a0b4957)
+  - FAIL-1: WorldMorphScroll useFrame bail-out
+  - FAIL-2: WorldCameraRig minimalMode guard
+  - FAIL-14: MinimalModeContent `<a>` → `<Link>` (WorldCanvas preservation)
+  - Adversarial: Array.isArray guard in getAltData
+  - A11Y: role=region + heading hierarchy in WorldSRMirror
+- REQ 충족: CONT-02 (5 posts + build gate), CONT-03 (alt.json sidecar), A11Y-01 (minimal mode toggle), A11Y-02 (SR mirror)
+- Phase 6 deferred items: 5/7 resolved, 2 remain (SplineIslandProp Suspense, WorldKeyboardNav Escape)
+- 다음: `/sunco:ship 7`
+
+*Last updated: 2026-04-16 by /sunco:verify 7.*
+
+- **phase**: 8
+- **status**: shipped
+- **pr**: kwmin122/my-blog#6
+- **next_action**: Merge PR #6 → deploy to Vercel production
+- **last_updated**: 2026-04-17T10:30:00.000Z

@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import * as THREE from 'three'
 import { tokens } from '@/tokens/tokens'
 
@@ -9,9 +9,10 @@ interface FloatingIslandProps {
   position: [number, number, number]
   scale: [number, number, number]
   seed: number
+  morphRef?: React.Ref<THREE.Mesh>  // optional external ref for WorldMorphScroll
 }
 
-export default function FloatingIsland({ id, position, scale, seed }: FloatingIslandProps) {
+export default function FloatingIsland({ id, position, scale, seed, morphRef }: FloatingIslandProps) {
   const geo = useMemo(() => {
     const g = new THREE.SphereGeometry(1, 12, 8)
     const pos = g.attributes.position as THREE.BufferAttribute
@@ -24,11 +25,25 @@ export default function FloatingIsland({ id, position, scale, seed }: FloatingIs
       pos.setY(i, pos.getY(i) + wave)
     }
     g.computeVertexNormals()
+
+    // Morph target: squash island to flat disk (morphTargetInfluences[0])
+    const posAttr = g.attributes.position as THREE.BufferAttribute
+    const morphArr = new Float32Array(posAttr.array.length)
+    for (let i = 0; i < posAttr.count; i++) {
+      morphArr[i * 3 + 0] = posAttr.getX(i)
+      morphArr[i * 3 + 1] = posAttr.getY(i) * 0.4  // squash to flat disk
+      morphArr[i * 3 + 2] = posAttr.getZ(i)
+    }
+    g.morphAttributes.position = [new THREE.Float32BufferAttribute(morphArr, 3)]
+    g.morphTargetsRelative = false
+    // Note: computeMorphNormals() was removed in Three.js r150+.
+    // Morph normals are recomputed automatically by the WebGPURenderer on each frame.
+
     return g
   }, [seed])
 
   return (
-    <mesh geometry={geo} position={position} scale={scale} name={id}>
+    <mesh ref={morphRef} geometry={geo} position={position} scale={scale} name={id}>
       <meshStandardMaterial color={tokens.scene.islandSand} roughness={0.9} metalness={0.05} />
     </mesh>
   )

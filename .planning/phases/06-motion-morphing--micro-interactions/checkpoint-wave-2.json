@@ -1,0 +1,44 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "06",
+  "phase_name": "motion-morphing--micro-interactions",
+  "phase_slug": "06-motion-morphing--micro-interactions",
+  "wave_completed": 2,
+  "timestamp": "2026-04-16T05:54:23Z",
+  "plans_completed": [
+    {
+      "id": "06-01",
+      "title": "Morph scroll timeline + neutra objects",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/06-motion-morphing--micro-interactions/06-01-SUMMARY.md",
+      "last_commit": "b291b49"
+    },
+    {
+      "id": "06-02",
+      "title": "Custom cursor with magnet and reduced-motion gate",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/06-motion-morphing--micro-interactions/06-02-SUMMARY.md",
+      "last_commit": "ef20f5a"
+    },
+    {
+      "id": "06-03",
+      "title": "Rive state machine sign overlays",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/06-motion-morphing--micro-interactions/06-03-SUMMARY.md",
+      "last_commit": "2675f87"
+    }
+  ],
+  "plans_pending": [],
+  "blast_radius": {
+    "risk": "MEDIUM",
+    "files_in_scope": 12,
+    "files_transitively_affected": 7
+  },
+  "lint_gate_overrides": [],
+  "branch": "milestone/v1.0-launch",
+  "interrupted": false,
+  "next_wave": null
+}

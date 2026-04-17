@@ -1,6 +1,6 @@
 'use client'
 
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import { Html } from '@react-three/drei'
 import { useRef } from 'react'
 import { markWorldFirstFrame } from '@/lib/perf'
@@ -9,6 +9,26 @@ import ArchipelagoScene from './ArchipelagoScene'
 import WorldCameraRig from './WorldCameraRig'
 import WorldScrollCamera from './WorldScrollCamera'
 import UIGlassPanel from '@/components/ui/UIGlassPanel'
+
+function DrawCallMonitor() {
+  const gl = useThree((s) => s.gl)
+  useFrame(() => {
+    const info = (gl as unknown as { info?: { render?: { drawCalls?: number } } }).info
+    const calls = info?.render?.drawCalls ?? 0
+    if (typeof window !== 'undefined') {
+      try {
+        const prev = Number(sessionStorage.getItem('world-draw-calls-peak') ?? '0')
+        if (calls > prev) sessionStorage.setItem('world-draw-calls-peak', String(calls))
+      } catch {
+        // sessionStorage unavailable (private browsing, quota exceeded)
+      }
+    }
+    if (process.env.NODE_ENV !== 'production' && calls > 600) {
+      console.warn(`[perf] WARN draw calls this frame: ${calls}`)
+    }
+  })
+  return null
+}
 
 export default function WorldScene() {
   const hasMarked = useRef(false)
@@ -23,6 +43,7 @@ export default function WorldScene() {
 
   return (
     <>
+      <DrawCallMonitor />
       <WorldCameraRig />
       <WorldScrollCamera />
       <ArchipelagoScene />

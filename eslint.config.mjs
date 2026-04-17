@@ -24,11 +24,12 @@ const noHardcodedHexRule = {
 }
 
 const config = [
+  { ignores: ['public/draco/**'] },
   ...(Array.isArray(nextConfig) ? nextConfig : [nextConfig]),
   {
     // tokens/tokens.ts is excluded — it IS the source of hex values
     // .claude/worktrees/** excluded — parallel agent isolation dirs, not project source
-    ignores: ['tokens/tokens.ts', '.claude/**'],
+    ignores: ['tokens/tokens.ts', '.claude/**', 'public/draco/**'],
     plugins: {
       local: {
         rules: { 'no-hardcoded-hex': noHardcodedHexRule },

@@ -1,0 +1,44 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "07",
+  "phase_name": "content-a11y-polish-cognitive-toggle",
+  "phase_slug": "07-content-a11y-polish--cognitive-toggle",
+  "wave_completed": 2,
+  "timestamp": "2026-04-16T08:55:00Z",
+  "plans_completed": [
+    {
+      "id": "07-01",
+      "title": "Content schema validation + 5 posts + alt sidecar JSON",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/07-content-a11y-polish--cognitive-toggle/07-01-SUMMARY.md",
+      "last_commit": "f80a36c"
+    },
+    {
+      "id": "07-02",
+      "title": "SR-only DOM mirror + worldStore activeWaypoint subscription",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/07-content-a11y-polish--cognitive-toggle/07-02-SUMMARY.md",
+      "last_commit": "4da8d6a"
+    },
+    {
+      "id": "07-03",
+      "title": "Minimal mode toggle + Lenis/GSAP/Rive pause + Phase 6 deferred fixes",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/07-content-a11y-polish--cognitive-toggle/07-03-SUMMARY.md",
+      "last_commit": "292ff60"
+    }
+  ],
+  "plans_pending": [],
+  "blast_radius": {
+    "risk": "MEDIUM",
+    "files_in_scope": 25,
+    "files_transitively_affected": 8
+  },
+  "lint_gate_overrides": [],
+  "branch": "milestone/v1.0-launch",
+  "interrupted": false,
+  "next_wave": null
+}

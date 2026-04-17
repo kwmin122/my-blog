@@ -19,6 +19,30 @@ export const WAYPOINTS: Record<string, WaypointData> = {
     target: { x: -8, y: 0, z: 0 },
     islandIndex: 1,
   },
+  'post-diary-01': {
+    slug: 'post-diary-01',
+    position: { x: -8, y: 3, z: 0 },
+    target: { x: -8, y: 0, z: 0 },
+    islandIndex: 1,
+  },
+  'post-diary-02': {
+    slug: 'post-diary-02',
+    position: { x: 8, y: 3, z: 0 },
+    target: { x: 8, y: 0, z: 0 },
+    islandIndex: 2,
+  },
+  'post-study-01': {
+    slug: 'post-study-01',
+    position: { x: 8, y: 3, z: 0 },
+    target: { x: 8, y: 0, z: 0 },
+    islandIndex: 2,
+  },
+  'post-log-01': {
+    slug: 'post-log-01',
+    position: { x: 0, y: 3, z: -10 },
+    target: { x: 0, y: 0, z: -10 },
+    islandIndex: 3,
+  },
 }
 
 // Scroll flythrough waypoints for /world page — sequential stop-points

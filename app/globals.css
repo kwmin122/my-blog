@@ -61,3 +61,9 @@
   border-radius: 0.75rem;
   transition: background 0.2s var(--ease-default);
 }
+
+/* Custom cursor — applied by WorldCursor when prefers-reduced-motion is not set */
+.cursor-none,
+.cursor-none * {
+  cursor: none !important;
+}
