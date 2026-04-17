@@ -26,6 +26,31 @@ const nextConfig: NextConfig = {
     }
     return config
   },
+  async headers() {
+    return [
+      {
+        // KTX2 MIME type for compressed texture assets
+        source: '/:path*.ktx2',
+        headers: [{ key: 'Content-Type', value: 'image/ktx2' }],
+      },
+      {
+        // COOP/COEP for SharedArrayBuffer (Draco WASM + KTX2 transcoder)
+        // Scoped to /world path only to avoid breaking Rive CDN on other routes
+        source: '/world',
+        headers: [
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+        ],
+      },
+      {
+        source: '/world/:path*',
+        headers: [
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+          { key: 'Cross-Origin-Embedder-Policy', value: 'require-corp' },
+        ],
+      },
+    ]
+  },
 }
 
 const withMDX = createMDX({
