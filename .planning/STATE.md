@@ -6,19 +6,19 @@
 
 ## Current Phase
 
-**Phase 8 — Asset Pipeline, Performance Gates & Launch**
-**Milestone:** M3 (v1.0 — 2026-12-31)
-**Status:** Not started — pending plan
-**Branch:** `milestone/v1.0-launch`
+**Milestone v1.0 — COMPLETE**
+All 8 phases shipped. PR kwmin122/my-blog#6 open (milestone/v1.0-launch → main).
 
 ### 다음 액션
-```
-/sunco:plan 8
-```
+Merge PR #6 → deploy to Vercel production.
 
-### Carry-forward from Phase 7
-- `SplineIslandProp` Suspense boundary (deferred from Phase 6, re-deferred)
-- `WorldKeyboardNav` Escape trap (deferred from Phase 6, re-deferred)
+---
+
+## Phase 8 — Asset Pipeline, Performance Gates & Launch ✅ SHIPPED
+**Status:** Shipped (2026-04-17)
+**PR:** kwmin122/my-blog#6 (milestone/v1.0-launch → main, combined with Phase 6+7)
+**Verification:** Overall PASS — 4 fixes applied during verify; all 7 layers PASS/WARN
+**Requirements:** INFRA-01, INFRA-02, INFRA-03, PERF-01, PERF-02, PERF-03, PERF-04
 
 ---
 
@@ -287,6 +287,7 @@ Phase 1 착수 전 또는 다음 페이즈 전환 전 반드시 해소해야 할
 *Last updated: 2026-04-16 by /sunco:verify 7.*
 
 - **phase**: 8
-- **status**: verified
-- **next_action**: Ship Phase 8: /sunco:ship 8
-- **last_updated**: 2026-04-17T10:00:00.000Z
+- **status**: shipped
+- **pr**: kwmin122/my-blog#6
+- **next_action**: Merge PR #6 → deploy to Vercel production
+- **last_updated**: 2026-04-17T10:30:00.000Z
