@@ -24,11 +24,10 @@ const noHardcodedHexRule = {
 }
 
 const config = [
+  // Global ignores — must be standalone config objects in ESLint 9 flat config
+  { ignores: ['tokens/tokens.ts', '.claude/**', 'public/draco/**'] },
   ...(Array.isArray(nextConfig) ? nextConfig : [nextConfig]),
   {
-    // tokens/tokens.ts is excluded — it IS the source of hex values
-    // .claude/worktrees/** excluded — parallel agent isolation dirs, not project source
-    ignores: ['tokens/tokens.ts', '.claude/**'],
     plugins: {
       local: {
         rules: { 'no-hardcoded-hex': noHardcodedHexRule },
