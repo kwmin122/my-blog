@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/compress-assets.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --max-warnings 0"
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
+    "@gltf-transform/cli": "^4.3.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/mdx": "2.0.13",
     "@types/node": "^20.0.0",
