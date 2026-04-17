@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, Suspense } from 'react'
 import * as THREE from 'three'
 import FloatingIsland from './FloatingIsland'
 import SplineIslandProp from './SplineIslandProp'
@@ -63,39 +63,42 @@ export default function ArchipelagoScene() {
       <FloatingIsland id="sample-island" position={[-8, -1,   0]}  scale={[3,   1.2, 3]}   seed={3.7} />
       <FloatingIsland id="study-island"  position={[8,  -2,   0]}  scale={[2.5, 1,   2.5]} seed={5.1} />
 
-      {/* Spline placeholder props — userData.source = 'spline' tagged in SplineIslandProp */}
-      <SplineIslandProp
-        path="/assets/raw/island-cottage.glb"
-        position={[0, 1.8, 0]}
-        scale={[0.6, 0.6, 0.6]}
-        name="spline-cottage"
-      />
-      <SplineIslandProp
-        path="/assets/raw/island-tree.glb"
-        position={[-8, 0.6, 0]}
-        scale={[0.5, 0.5, 0.5]}
-        name="spline-tree"
-      />
-      <SplineIslandProp
-        path="/assets/raw/island-arch.glb"
-        position={[4, 1.0, -2]}
-        scale={[0.7, 0.7, 0.7]}
-        name="spline-arch"
-      />
+      {/* Tier 3a: Spline GLB assets — external async, Suspense boundary */}
+      <Suspense fallback={null}>
+        <SplineIslandProp
+          path="/assets/out/island-cottage.glb"
+          position={[0, 1.8, 0]}
+          scale={[0.6, 0.6, 0.6]}
+          name="spline-cottage"
+        />
+        <SplineIslandProp
+          path="/assets/out/island-tree.glb"
+          position={[-8, 0.6, 0]}
+          scale={[0.5, 0.5, 0.5]}
+          name="spline-tree"
+        />
+        <SplineIslandProp
+          path="/assets/out/island-arch.glb"
+          position={[4, 1.0, -2]}
+          scale={[0.7, 0.7, 0.7]}
+          name="spline-arch"
+        />
+      </Suspense>
 
-      {/* Rive sign overlays — INT-01: click → 'Trigger 1' fires in 'State Machine 1'.
-          Hover: cursor magnet via onPointerEnter → setCursorMagnetTarget (no SMIBool in asset). */}
-      <Html occlude distanceFactor={10} position={[0, 3.5, 0]} center>
-        <RiveSignBoard src="/assets/rive/sign-a.riv" label="홈 섬 표지판" />
-      </Html>
+      {/* Tier 3b: Rive sign boards — external async, Suspense boundary */}
+      <Suspense fallback={null}>
+        <Html occlude distanceFactor={10} position={[0, 3.5, 0]} center>
+          <RiveSignBoard src="/assets/rive/sign-a.riv" label="홈 섬 표지판" />
+        </Html>
 
-      <Html occlude distanceFactor={10} position={[-8, 2.5, 0]} center>
-        <RiveSignBoard src="/assets/rive/sign-b.riv" label="샘플 섬 표지판" />
-      </Html>
+        <Html occlude distanceFactor={10} position={[-8, 2.5, 0]} center>
+          <RiveSignBoard src="/assets/rive/sign-b.riv" label="샘플 섬 표지판" />
+        </Html>
 
-      <Html occlude distanceFactor={10} position={[8, 1.5, 0]} center>
-        <RiveSignBoard src="/assets/rive/sign-c.riv" label="공부 섬 표지판" />
-      </Html>
+        <Html occlude distanceFactor={10} position={[8, 1.5, 0]} center>
+          <RiveSignBoard src="/assets/rive/sign-c.riv" label="공부 섬 표지판" />
+        </Html>
+      </Suspense>
 
       {/* VIS-04: Neutra-isolated objects — confined to home island only.
           userData.style = 'neutra' for scene auditing.
