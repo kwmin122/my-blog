@@ -16,8 +16,12 @@ function DrawCallMonitor() {
     const info = (gl as unknown as { info?: { render?: { drawCalls?: number } } }).info
     const calls = info?.render?.drawCalls ?? 0
     if (typeof window !== 'undefined') {
-      const prev = Number(sessionStorage.getItem('world-draw-calls-peak') ?? '0')
-      if (calls > prev) sessionStorage.setItem('world-draw-calls-peak', String(calls))
+      try {
+        const prev = Number(sessionStorage.getItem('world-draw-calls-peak') ?? '0')
+        if (calls > prev) sessionStorage.setItem('world-draw-calls-peak', String(calls))
+      } catch {
+        // sessionStorage unavailable (private browsing, quota exceeded)
+      }
     }
     if (process.env.NODE_ENV !== 'production' && calls > 600) {
       console.warn(`[perf] WARN draw calls this frame: ${calls}`)
