@@ -4,6 +4,7 @@ export function markWorldFirstFrame() {
   const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
   const delta = performance.now() - (nav?.startTime ?? 0)
   console.log(`[perf] /world first-frame: ${delta.toFixed(1)}ms`)
+  sessionStorage.setItem('world-first-frame', String(delta))
 }
 
 // Returns the observer so callers can disconnect() on cleanup
@@ -12,6 +13,7 @@ export function observeTextLCP(): PerformanceObserver | null {
   const po = new PerformanceObserver((list) => {
     for (const entry of list.getEntries()) {
       console.log(`[perf] /text LCP: ${entry.startTime.toFixed(1)}ms`)
+      sessionStorage.setItem('text-lcp', String(entry.startTime))
     }
   })
   po.observe({ type: 'largest-contentful-paint', buffered: true })
