@@ -1,0 +1,64 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "08",
+  "phase_name": "asset-pipeline-performance-gates-launch",
+  "phase_slug": "08-asset-pipeline-performance-gates--launch",
+  "wave_completed": 1,
+  "timestamp": "2026-04-17T16:50:00Z",
+  "plans_completed": [
+    {
+      "id": "08-01",
+      "title": "Build pipeline + response headers",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/08-asset-pipeline-performance-gates--launch/08-01-SUMMARY.md",
+      "last_commit": "592243b",
+      "files_written": [
+        "scripts/compress-assets.mjs",
+        "public/draco/draco_decoder.wasm",
+        "public/draco/draco_decoder.js",
+        "public/draco/draco_wasm_wrapper.js",
+        "components/world/SplineIslandProp.tsx",
+        "next.config.ts",
+        "package.json",
+        "eslint.config.mjs"
+      ]
+    },
+    {
+      "id": "08-02",
+      "title": "Suspense boundaries + mobile 탐험하기 gate",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/08-asset-pipeline-performance-gates--launch/08-02-SUMMARY.md",
+      "last_commit": "9daea10",
+      "files_written": [
+        "components/world/ArchipelagoScene.tsx",
+        "components/world/WorldCanvas.tsx"
+      ]
+    }
+  ],
+  "plans_pending": [
+    {
+      "id": "08-03",
+      "title": "Performance instrumentation + /_perf report route",
+      "wave": 2,
+      "status": "pending"
+    }
+  ],
+  "blast_radius": {
+    "risk": "LOW",
+    "files_in_scope": 12,
+    "files_transitively_affected": 2
+  },
+  "lint_gate_overrides": [
+    {
+      "plan_id": "08-01",
+      "decision": "fix",
+      "reason": "public/draco/** third-party WASM binary added to ESLint global ignores",
+      "timestamp": "2026-04-17T16:48:00Z"
+    }
+  ],
+  "branch": "milestone/v1.0-launch",
+  "interrupted": false,
+  "next_wave": 2
+}

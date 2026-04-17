@@ -1,0 +1,33 @@
+{
+  "schema": "sunco-checkpoint-v1",
+  "phase": "08",
+  "phase_name": "asset-pipeline-performance-gates-launch",
+  "phase_slug": "08-asset-pipeline-performance-gates--launch",
+  "wave_completed": 2,
+  "timestamp": "2026-04-17T17:10:00Z",
+  "plans_completed": [
+    {
+      "id": "08-03",
+      "title": "Performance instrumentation + /_perf report route",
+      "status": "completed",
+      "lint_status": "PASS",
+      "summary_path": ".planning/phases/08-asset-pipeline-performance-gates--launch/08-03-SUMMARY.md",
+      "last_commit": "44f7c33",
+      "files_written": [
+        "lib/perf.ts",
+        "components/world/WorldScene.tsx",
+        "app/_perf/page.tsx"
+      ]
+    }
+  ],
+  "plans_pending": [],
+  "blast_radius": {
+    "risk": "LOW",
+    "files_in_scope": 12,
+    "files_transitively_affected": 2
+  },
+  "lint_gate_overrides": [],
+  "branch": "milestone/v1.0-launch",
+  "interrupted": false,
+  "next_wave": null
+}
