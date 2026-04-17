@@ -4,7 +4,16 @@ export function markWorldFirstFrame() {
   const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming
   const delta = performance.now() - (nav?.startTime ?? 0)
   console.log(`[perf] /world first-frame: ${delta.toFixed(1)}ms`)
-  sessionStorage.setItem('world-first-frame', String(delta))
+  try {
+    sessionStorage.setItem('world-first-frame', delta.toFixed(1))
+  } catch {
+    // sessionStorage unavailable (private browsing, quota exceeded, etc.)
+  }
+  try {
+    performance.measure('world-first-frame', 'world-first-frame')
+  } catch {
+    // mark may not exist in all environments
+  }
 }
 
 // Returns the observer so callers can disconnect() on cleanup
