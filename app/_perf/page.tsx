@@ -21,6 +21,7 @@ export default function PerfPage() {
     const posterLcp = Number(sessionStorage.getItem('poster-lcp') ?? 'NaN')
     const posterSize = 332 // bytes — known placeholder size
 
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRows([
       { id: 'PERF-01', label: '/text/ LCP', threshold: 1500, unit: 'ms', value: isNaN(textLcp) ? null : textLcp },
       { id: 'PERF-02', label: '/world first frame', threshold: 3000, unit: 'ms', value: isNaN(worldFirst) ? null : worldFirst },
